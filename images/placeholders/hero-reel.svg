@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" role="img" aria-label="HERO REEL — REPLACE placeholder">
+  <rect width="1600" height="900" fill="#0A0A0A"/>
+  <rect x="0.0" y="0" width="267.7" height="558.0" fill="#F6F5F1" opacity="0.9"/><rect x="266.7" y="0" width="267.7" height="558.0" fill="#D8FF3E" opacity="0.9"/><rect x="533.3" y="0" width="267.7" height="558.0" fill="#FF3B2F" opacity="0.9"/><rect x="800.0" y="0" width="267.7" height="558.0" fill="#2A2A2A" opacity="0.9"/><rect x="1066.7" y="0" width="267.7" height="558.0" fill="#A6A39B" opacity="0.9"/><rect x="1333.3" y="0" width="267.7" height="558.0" fill="#141414" opacity="0.9"/>
+  <rect x="0" y="558.0" width="1600" height="342.0" fill="#0A0A0A"/>
+  <line x1="0" y1="558.0" x2="1600" y2="558.0" stroke="#FF3B2F" stroke-width="2"/>
+  
+        <circle cx="800.0" cy="279.0" r="81.0" fill="#0A0A0A" opacity="0.55"/>
+        <circle cx="800.0" cy="279.0" r="81.0" fill="none" stroke="#F6F5F1" stroke-width="2"/>
+        <path d="M 771.65 238.5 L 771.65 319.5 L 844.55 279.0 Z" fill="#F6F5F1"/>
+        
+  <text x="800.0" y="702.0" font-family="monospace" font-size="40.5" fill="#F6F5F1" text-anchor="middle" letter-spacing="2">HERO REEL — REPLACE</text>
+  <text x="800.0" y="783.0" font-family="monospace" font-size="28.8" fill="#A6A39B" text-anchor="middle" letter-spacing="1">16:9 · MP4/WEBM, 15–30S LOOP, MUTED+CAPTIONS</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" role="img" aria-label="CASE STUDY placeholder">
+  <rect width="1600" height="1000" fill="#0A0A0A"/>
+  <rect x="0.0" y="0" width="267.7" height="620.0" fill="#F6F5F1" opacity="0.9"/><rect x="266.7" y="0" width="267.7" height="620.0" fill="#D8FF3E" opacity="0.9"/><rect x="533.3" y="0" width="267.7" height="620.0" fill="#FF3B2F" opacity="0.9"/><rect x="800.0" y="0" width="267.7" height="620.0" fill="#2A2A2A" opacity="0.9"/><rect x="1066.7" y="0" width="267.7" height="620.0" fill="#A6A39B" opacity="0.9"/><rect x="1333.3" y="0" width="267.7" height="620.0" fill="#141414" opacity="0.9"/>
+  <rect x="0" y="620.0" width="1600" height="380.0" fill="#0A0A0A"/>
+  <line x1="0" y1="620.0" x2="1600" y2="620.0" stroke="#FF3B2F" stroke-width="2"/>
+  
+        <circle cx="800.0" cy="310.0" r="90.0" fill="#0A0A0A" opacity="0.55"/>
+        <circle cx="800.0" cy="310.0" r="90.0" fill="none" stroke="#F6F5F1" stroke-width="2"/>
+        <path d="M 768.5 265.0 L 768.5 355.0 L 849.5 310.0 Z" fill="#F6F5F1"/>
+        
+  <text x="800.0" y="780.0" font-family="monospace" font-size="45.0" fill="#F6F5F1" text-anchor="middle" letter-spacing="2">CASE STUDY</text>
+  <text x="800.0" y="870.0" font-family="monospace" font-size="32.0" fill="#A6A39B" text-anchor="middle" letter-spacing="1">BEFORE/AFTER OR CAMPAIGN STILL</text>
+</svg>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio | Dead Air Creative Media</title>
+<meta name="description" content="Video, photography and graphic design work from Dead Air Creative Media — bold content built for local small businesses.">
+<meta property="og:title" content="Portfolio | Dead Air Creative Media">
+<meta property="og:description" content="Video, photography and graphic design work from Dead Air Creative Media.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="images/placeholders/og-image.svg">
+<link rel="icon" href="images/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+<link rel="canonical" href="https://www.deadaircreative.co.uk/portfolio.html">
+<link rel="stylesheet" href="css/output.css?v=1784071575">
+</head>
+<body>
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-signal focus:text-white focus:px-4 focus:py-3 focus:font-display focus:font-bold focus:uppercase">Skip to content</a>
+
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-colors duration-300 border-b border-transparent">
+  <div class="container-px max-w-content mx-auto flex items-center justify-between h-20">
+    <a href="index.html" class="flex items-center gap-2.5 font-display font-normal text-lg tracking-wide text-paper">
+      <span class="relative inline-block h-9 aspect-[600/358] shrink-0">
+        <img src="images/brand/logo-mark.png" alt="" class="h-full w-full object-contain">
+        <span class="absolute left-[51.8%] top-[59.2%] h-[6px] w-[6px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-signal shadow-[0_0_8px_2px_rgba(255,59,47,0.85)] animate-pulse-dot" aria-hidden="true"></span>
+      </span> Dead Air
+    </a>
+    <nav class="hidden lg:flex items-center gap-10" aria-label="Primary">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="portfolio.html" class="nav-link active">Portfolio</a>
+      <a href="about.html" class="nav-link">About</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    <div class="flex items-center gap-4">
+      <a href="contact.html" class="hidden lg:inline-flex btn-primary text-xs px-5 py-3">Get Free Audit</a>
+      <button id="menu-toggle" class="lg:hidden p-2 -mr-2 text-paper" aria-expanded="false" aria-controls="mobile-menu" aria-label="Toggle menu">
+        <svg id="icon-open" class="h-7 w-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg id="icon-close" class="h-7 w-7 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+      </button>
+    </div>
+  </div>
+  <div id="mobile-menu" class="lg:hidden hidden bg-ink border-t border-border">
+    <nav class="container-px py-8 flex flex-col gap-6" aria-label="Mobile">
+      <a href="index.html" class="font-display text-2xl font-bold uppercase text-paper">Home</a>
+      <a href="services.html" class="font-display text-2xl font-bold uppercase text-paper">Services</a>
+      <a href="portfolio.html" class="font-display text-2xl font-bold uppercase text-signal">Portfolio</a>
+      <a href="about.html" class="font-display text-2xl font-bold uppercase text-paper">About</a>
+      <a href="contact.html" class="font-display text-2xl font-bold uppercase text-paper">Contact</a>
+      <a href="contact.html" class="btn-primary mt-2 w-full">Get Free Audit</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- PAGE HERO -->
+  <section class="relative pt-40 pb-16 border-b border-border container-px max-w-content mx-auto">
+    <span class="hidden lg:block absolute top-1/2 right-6 -translate-y-1/2 origin-right -rotate-90 font-mono text-[11px] uppercase tracking-widest2 text-paper-muted/60 whitespace-nowrap">10 Projects &mdash; 291 Pieces Of Work</span>
+    <p class="eyebrow mb-6"><span class="live-dot" aria-hidden="true"></span> Portfolio</p>
+    <h1 class="text-display-lg uppercase max-w-3xl">Work That Speaks For Itself.</h1>
+    <p class="mt-6 max-w-xl text-lg text-paper-muted font-serif italic">A look at the video, photography and design work coming out of Dead Air. Filter by craft or scroll through everything.</p>
+  </section>
+
+  <!-- FILTERS -->
+  <div class="sticky top-20 z-30 bg-ink/95 backdrop-blur border-b border-border">
+    <div class="container-px max-w-content mx-auto py-5">
+      <div id="portfolio-filters" class="flex flex-wrap gap-3" role="group" aria-label="Filter portfolio by category">
+        <button data-filter="all" aria-pressed="true" class="tag !text-paper bg-signal border-signal px-4 py-2 text-xs font-display font-bold">All Work</button>
+        <button data-filter="video" aria-pressed="false" class="tag px-4 py-2 text-xs font-display font-bold hover:border-paper transition-colors">Video</button>
+        <button data-filter="photography" aria-pressed="false" class="tag px-4 py-2 text-xs font-display font-bold hover:border-paper transition-colors">Photography</button>
+        <button data-filter="design" aria-pressed="false" class="tag px-4 py-2 text-xs font-display font-bold hover:border-paper transition-colors">Design</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- GRID -->
+  <section class="section container-px max-w-content mx-auto">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <button type="button" data-category="video" data-project="nevuary" class="portfolio-card portfolio-card--wide">
+        <video class="portfolio-thumb" src="images/portfolio/video/nevuary-preview.mp4" poster="images/portfolio/nevuary.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="portfolio-card-scrim"></span>
+        <span class="portfolio-card-expand"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="portfolio-card-caption">
+          <span class="font-display font-bold uppercase text-lg text-paper block">Nevuary</span>
+          <span class="text-xs text-paper-muted font-mono uppercase tracking-widest2 mt-1 block">Video &amp; Photography</span>
+        </span>
+      </button>
+
+      <button type="button" data-category="photography" data-project="riverridge" class="portfolio-card">
+        <img class="portfolio-thumb" src="images/portfolio/riverridge.webp" alt="RiverRidge sponsorship coverage at Balmoral Show">
+        <span class="portfolio-card-scrim"></span>
+        <span class="portfolio-card-expand"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="portfolio-card-caption">
+          <span class="font-display font-bold uppercase text-lg text-paper block">RiverRidge</span>
+          <span class="text-xs text-paper-muted font-mono uppercase tracking-widest2 mt-1 block">Commercial &amp; Event</span>
+        </span>
+      </button>
+
+      <button type="button" data-category="video" data-project="fresh-pop" class="portfolio-card">
+        <video class="portfolio-thumb" src="images/portfolio/video/fresh-pop-preview.mp4" poster="images/portfolio/fresh-pop.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="portfolio-card-scrim"></span>
+        <span class="portfolio-card-expand"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="portfolio-card-caption">
+          <span class="font-display font-bold uppercase text-lg text-paper block">Fresh Pop</span>
+          <span class="text-xs text-paper-muted font-mono uppercase tracking-widest2 mt-1 block">Video</span>
+        </span>
+      </button>
+
+      <button type="button" data-category="photography" data-project="ulster-rally" class="portfolio-card">
+        <img class="portfolio-thumb" src="images/portfolio/ulster-rally.webp" alt="Ulster Rally motorsport action photography">
+        <span class="portfolio-card-scrim"></span>
+        <span class="portfolio-card-expand"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="portfolio-card-caption">
+          <span class="font-display font-bold uppercase text-lg text-paper block">Ulster Rally</span>
+          <span class="text-xs text-paper-muted font-mono uppercase tracking-widest2 mt-1 block">Action</span>
+        </span>
+      </button>
+
+      <button type="button" data-category="photography" data-project="moo-town" class="portfolio-card">
+        <img class="portfolio-thumb" src="images/portfolio/moo-town.webp" alt="Moo Town Creamery product photography">
+        <span class="portfolio-card-scrim"></span>
+        <span class="portfolio-card-expand"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="portfolio-card-caption">
+          <span class="font-display font-bold uppercase text-lg text-paper block">Moo Town Creamery</span>
+          <span class="text-xs text-paper-muted font-mono uppercase tracking-widest2 mt-1 block">Food</span>
+        </span>
+      </button>
+
+      <div class="col-span-full bg-signal text-ink flex flex-wrap items-center justify-between gap-6 px-6 sm:px-12 py-10 sm:py-14" style="width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);">
+        <p class="font-display font-bold uppercase leading-[0.9] text-[clamp(2.5rem,9vw,6rem)]">291 Pieces<br>Of Proof.</p>
+        <p class="max-w-xs font-display font-bold uppercase text-sm sm:text-base tracking-wide">And counting. Every shoot, every edit, every client — this is what showing up actually looks like.</p>
+      </div>
+
+      <button type="button" data-category="photography" data-project="portrait" class="portfolio-card">
+        <img class="portfolio-thumb" src="images/portfolio/portrait.webp" alt="Portrait photography">
+        <span class="portfolio-card-scrim"></span>
+        <span class="portfolio-card-expand"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="portfolio-card-caption">
+          <span class="font-display font-bold uppercase text-lg text-paper block">Portrait</span>
+          <span class="text-xs text-paper-muted font-mono uppercase tracking-widest2 mt-1 block">Photography</span>
+        </span>
+      </button>
+
+      <button type="button" data-category="photography" data-project="landscape" class="portfolio-card portfolio-card--wide">
+        <img class="portfolio-thumb" src="images/portfolio/landscape.webp" alt="Landscape photography">
+        <span class="portfolio-card-scrim"></span>
+        <span class="portfolio-card-expand"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="portfolio-card-caption">
+          <span class="font-display font-bold uppercase text-lg text-paper block">Landscape</span>
+          <span class="text-xs text-paper-muted font-mono uppercase tracking-widest2 mt-1 block">Photography</span>
+        </span>
+      </button>
+
+      <button type="button" data-category="photography" data-project="event" class="portfolio-card">
+        <img class="portfolio-thumb" src="images/portfolio/event.webp" alt="Event photography">
+        <span class="portfolio-card-scrim"></span>
+        <span class="portfolio-card-expand"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="portfolio-card-caption">
+          <span class="font-display font-bold uppercase text-lg text-paper block">Event</span>
+          <span class="text-xs text-paper-muted font-mono uppercase tracking-widest2 mt-1 block">Photography</span>
+        </span>
+      </button>
+
+      <button type="button" data-category="video" data-project="flawless-finesse" class="portfolio-card">
+        <video class="portfolio-thumb" src="images/portfolio/video/flawless-finesse-preview.mp4" poster="images/portfolio/flawless-finesse.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="portfolio-card-scrim"></span>
+        <span class="portfolio-card-expand"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="portfolio-card-caption">
+          <span class="font-display font-bold uppercase text-lg text-paper block">Flawless Finesse Detailing</span>
+          <span class="text-xs text-paper-muted font-mono uppercase tracking-widest2 mt-1 block">Video</span>
+        </span>
+      </button>
+
+      <button type="button" data-category="video" data-project="ni-hospice" class="portfolio-card">
+        <video class="portfolio-thumb" src="images/portfolio/video/ni-hospice-preview.mp4" poster="images/portfolio/ni-hospice.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+        <span class="portfolio-card-scrim"></span>
+        <span class="portfolio-card-expand"><svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <span class="portfolio-card-caption">
+          <span class="font-display font-bold uppercase text-lg text-paper block">NI Hospice</span>
+          <span class="text-xs text-paper-muted font-mono uppercase tracking-widest2 mt-1 block">RiverRidge &middot; Video</span>
+        </span>
+      </button>
+
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="fixed inset-0 z-[100] hidden bg-ink overflow-y-auto" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+    <button type="button" id="lightbox-close-btn" data-lightbox-close class="fixed top-5 right-5 sm:top-8 sm:right-10 z-20 h-12 w-12 flex items-center justify-center border border-border bg-ink/90 backdrop-blur text-paper hover:border-signal hover:text-signal transition-colors" aria-label="Close project">
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+
+    <span class="hidden lg:block fixed top-1/2 left-6 -translate-y-1/2 origin-left -rotate-90 font-mono text-[11px] uppercase tracking-widest2 text-paper-muted/60 whitespace-nowrap">Selected Work &mdash; Dead Air</span>
+
+    <div class="border-b border-border relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-signal/15 via-transparent to-transparent pointer-events-none"></div>
+      <div class="container-px max-w-content mx-auto pt-24 pb-14 sm:pt-32 sm:pb-16 relative">
+        <p id="lightbox-tag" class="eyebrow mb-6"></p>
+        <h2 id="lightbox-title" class="text-display-lg uppercase max-w-3xl"></h2>
+        <p id="lightbox-description" class="mt-6 max-w-2xl text-lg sm:text-xl text-paper-muted font-serif italic"></p>
+        <p id="lightbox-counter" class="mt-8 font-mono text-xs uppercase tracking-widest2 text-signal"></p>
+      </div>
+    </div>
+
+    <div id="lightbox-media" class="container-px max-w-content mx-auto py-10 sm:py-14 columns-1 sm:columns-2 lg:columns-3 gap-4"></div>
+  </div>
+
+  <!-- FINAL CTA -->
+  <section class="section container-px max-w-content mx-auto text-center border-t border-border">
+    <p class="eyebrow justify-center mb-6"><span class="live-dot" aria-hidden="true"></span> Your Business Could Be Next</p>
+    <h2 class="text-display-lg">Let's Make Something Bold.</h2>
+    <p class="mt-6 text-paper-muted text-lg max-w-xl mx-auto">Book a free content audit and let's talk about what standing out could look like for you.</p>
+    <div class="mt-10">
+      <a href="contact.html" class="btn-primary">Get Your Free Content Audit</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="border-t border-border">
+  <div class="container-px max-w-content mx-auto py-16 grid md:grid-cols-4 gap-12">
+    <div class="md:col-span-2">
+      <a href="index.html" class="flex items-center gap-2.5 font-display font-normal text-lg tracking-wide text-paper">
+        <span class="relative inline-block h-9 aspect-[600/358] shrink-0">
+        <img src="images/brand/logo-mark.png" alt="" class="h-full w-full object-contain">
+        <span class="absolute left-[51.8%] top-[59.2%] h-[6px] w-[6px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-signal shadow-[0_0_8px_2px_rgba(255,59,47,0.85)] animate-pulse-dot" aria-hidden="true"></span>
+      </span> Dead Air
+      </a>
+      <p class="mt-4 text-paper-muted max-w-sm">Content that cuts through the noise. Bold video, photography and graphic design for local small businesses who want to stand out.</p>
+      <div class="flex items-center gap-4 mt-6">
+        <a href="#" aria-label="Dead Air on Instagram" class="text-paper-muted hover:text-paper transition-colors"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        <a href="#" aria-label="Dead Air on TikTok" class="text-paper-muted hover:text-paper transition-colors"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 4v9.5a3.5 3.5 0 11-3-3.46" stroke-linecap="round"/><path d="M14 4a5 5 0 005 5" stroke-linecap="round"/></svg></a>
+        <a href="#" aria-label="Dead Air on Facebook" class="text-paper-muted hover:text-paper transition-colors"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M15 8h2V5h-2a4 4 0 00-4 4v2H9v3h2v6h3v-6h2.5l.5-3H14V9a1 1 0 011-1z" stroke-linejoin="round"/></svg></a>
+        <a href="#" aria-label="Dead Air on LinkedIn" class="text-paper-muted hover:text-paper transition-colors"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="7" y1="10" x2="7" y2="16"/><circle cx="7" cy="7" r="0.5" fill="currentColor"/><path d="M11 16v-4a2 2 0 014 0v4" stroke-linecap="round"/><line x1="11" y1="10" x2="11" y2="16"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h3 class="font-display text-sm font-bold uppercase tracking-wide mb-4">Navigate</h3>
+      <ul class="space-y-3 text-paper-muted">
+        <li><a href="index.html" class="hover:text-paper transition-colors">Home</a></li>
+        <li><a href="services.html" class="hover:text-paper transition-colors">Services</a></li>
+        <li><a href="portfolio.html" class="hover:text-paper transition-colors">Portfolio</a></li>
+        <li><a href="about.html" class="hover:text-paper transition-colors">About</a></li>
+        <li><a href="contact.html" class="hover:text-paper transition-colors">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-display text-sm font-bold uppercase tracking-wide mb-4">Get In Touch</h3>
+      <ul class="space-y-3 text-paper-muted">
+        <li><a href="mailto:hello@deadaircreative.co.uk" class="hover:text-paper transition-colors">hello@deadaircreative.co.uk</a></li>
+        <li><a href="tel:+441234567890" class="hover:text-paper transition-colors">01234 567 890</a></li>
+        <li>Serving [Your Town/Region] &amp; surrounding areas</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-border">
+    <div class="container-px max-w-content mx-auto py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-paper-muted font-mono uppercase tracking-widest2">
+      <p>&copy; <span id="year"></span> Dead Air Creative Media. All rights reserved.</p>
+      <p>Content that cuts through the noise.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="js/portfolio-data.js?v=1784071575"></script>
+<script src="js/main.js?v=1784071575"></script>
+</body>
+</html>

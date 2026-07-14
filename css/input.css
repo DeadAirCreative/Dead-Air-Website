@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&display=swap');
+
+@font-face {
+  font-family: 'Devil Breeze';
+  src: url('../fonts/Devil Breeze Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Devil Breeze';
+  src: url('../fonts/Devil Breeze Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Devil Breeze';
+  src: url('../fonts/Devil Breeze Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Devil Breeze';
+  src: url('../fonts/Devil Breeze Demi.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Devil Breeze';
+  src: url('../fonts/Devil Breeze Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+  body {
+    @apply bg-ink text-paper font-body antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display font-bold tracking-tight;
+  }
+  ::selection {
+    @apply bg-signal text-ink;
+  }
+  a, button {
+    @apply cursor-pointer;
+  }
+  :focus-visible {
+    outline: 2px solid #FF3B2F;
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .container-px {
+    @apply px-6 sm:px-10 lg:px-16;
+  }
+
+  .section {
+    @apply py-18 sm:py-22 lg:py-30;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest2 text-signal;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-none px-7 py-4 font-display font-bold uppercase tracking-wide text-sm transition-all duration-200 ease-out-expo min-h-[3rem];
+  }
+  .btn-primary {
+    @apply btn bg-signal text-white hover:bg-signal-hover active:translate-y-px;
+  }
+  .btn-outline {
+    @apply btn border-2 border-paper text-paper hover:bg-paper hover:text-ink;
+  }
+  .btn-ghost {
+    @apply btn border-2 border-border text-paper hover:border-paper;
+  }
+
+  .nav-link {
+    @apply relative font-display text-sm font-semibold uppercase tracking-wide text-paper/80 transition-colors duration-200 hover:text-paper;
+  }
+  .nav-link::after {
+    content: "";
+    @apply absolute -bottom-1 left-0 h-[2px] w-0 bg-signal transition-all duration-300 ease-out-expo;
+  }
+  .nav-link:hover::after, .nav-link.active::after {
+    @apply w-full;
+  }
+
+  .card {
+    @apply border border-border bg-surface p-8 transition-colors duration-300;
+  }
+
+  .tag {
+    @apply inline-flex items-center rounded-none border border-border px-3 py-1 font-mono text-[11px] uppercase tracking-widest2 text-paper-muted;
+  }
+
+  .reveal {
+    @apply opacity-0 translate-y-6;
+    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.is-visible {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .live-dot {
+    @apply relative inline-block h-2 w-2 rounded-full bg-signal animate-pulse-dot;
+  }
+
+  .portfolio-card {
+    @apply relative block w-full aspect-[4/5] overflow-hidden border border-border bg-surface p-0 text-left;
+  }
+  .portfolio-card--wide {
+    @apply aspect-[4/5] sm:aspect-[16/10] sm:col-span-2;
+  }
+  .portfolio-thumb {
+    @apply absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out-expo;
+  }
+  .portfolio-card:hover .portfolio-thumb {
+    transform: scale(1.05);
+  }
+  .portfolio-card-scrim {
+    @apply absolute inset-0 bg-gradient-to-t from-ink via-ink/15 to-transparent opacity-80 transition-opacity duration-300;
+  }
+  .portfolio-card:hover .portfolio-card-scrim {
+    opacity: 0.95;
+  }
+  .portfolio-card-caption {
+    @apply absolute inset-x-0 bottom-0 p-5;
+  }
+  .portfolio-card-expand {
+    @apply absolute top-4 right-4 flex h-9 w-9 items-center justify-center rounded-full border border-border bg-ink/60 text-paper opacity-0 backdrop-blur transition-opacity duration-300;
+  }
+  .portfolio-card:hover .portfolio-card-expand {
+    opacity: 1;
+  }
+
+  /* Spotlight hover glow — cursor-tracked glow for cards + thumbnail frames.
+     Position vars (--x/--y) are set once globally on :root (see main.js) in
+     viewport px; background-attachment:fixed lets every spotlit element read
+     the same coordinate without per-element math. Deliberately NOT using
+     CSS mask to confine this to a border ring — mask-composite (exclude/xor)
+     proved unreliable in testing despite spec-correct syntax, rendering
+     nothing even with correct computed styles. Instead the glow pseudo-element
+     paints on top (::after, last in paint order) and relies on each target's
+     own overflow-hidden/inset:0 box to clip it — simpler and cross-browser
+     safe. A hover border-colour shift reinforces the "outline" read on top.
+     Brand red only, no hue-shifting, to stay on the single-accent system.
+     Applies to any element with the .spotlight class, plus .card and
+     .portfolio-card directly (so existing markup didn't need touching). */
+  .spotlight,
+  .card,
+  .portfolio-card {
+    position: relative;
+    transition: border-color 0.4s ease-out-expo;
+  }
+  .spotlight:hover,
+  .card:hover,
+  .portfolio-card:hover {
+    border-color: #FF3B2F;
+  }
+  .spotlight::after,
+  .card::after,
+  .portfolio-card::after {
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-image: radial-gradient(
+      280px 280px at var(--x, -9999px) var(--y, -9999px),
+      hsl(5 90% 55% / 0.45), transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease-out-expo;
+  }
+  .spotlight:hover::after,
+  .card:hover::after,
+  .portfolio-card:hover::after {
+    opacity: 1;
+  }
+}

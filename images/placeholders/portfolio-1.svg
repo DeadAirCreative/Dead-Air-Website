@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1500" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" role="img" aria-label="PROJECT 01 placeholder">
+  <rect width="1200" height="1500" fill="#0A0A0A"/>
+  <rect x="0.0" y="0" width="201.0" height="930.0" fill="#F6F5F1" opacity="0.9"/><rect x="200.0" y="0" width="201.0" height="930.0" fill="#D8FF3E" opacity="0.9"/><rect x="400.0" y="0" width="201.0" height="930.0" fill="#FF3B2F" opacity="0.9"/><rect x="600.0" y="0" width="201.0" height="930.0" fill="#2A2A2A" opacity="0.9"/><rect x="800.0" y="0" width="201.0" height="930.0" fill="#A6A39B" opacity="0.9"/><rect x="1000.0" y="0" width="201.0" height="930.0" fill="#141414" opacity="0.9"/>
+  <rect x="0" y="930.0" width="1200" height="570.0" fill="#0A0A0A"/>
+  <line x1="0" y1="930.0" x2="1200" y2="930.0" stroke="#FF3B2F" stroke-width="2"/>
+  
+        <circle cx="600.0" cy="465.0" r="108.0" fill="#0A0A0A" opacity="0.55"/>
+        <circle cx="600.0" cy="465.0" r="108.0" fill="none" stroke="#F6F5F1" stroke-width="2"/>
+        <path d="M 562.2 411.0 L 562.2 519.0 L 659.4 465.0 Z" fill="#F6F5F1"/>
+        
+  <text x="600.0" y="1170.0" font-family="monospace" font-size="54.0" fill="#F6F5F1" text-anchor="middle" letter-spacing="2">PROJECT 01</text>
+  <text x="600.0" y="1305.0" font-family="monospace" font-size="38.4" fill="#A6A39B" text-anchor="middle" letter-spacing="1">CLIENT NAME · VIDEO</text>
+</svg>

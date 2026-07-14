@@ -1,0 +1,15 @@
+# Raw client-supplied footage archive (~1.3GB) — already fully processed into
+# images/portfolio/ via scripts/process-galleries.sh + process-videos.sh.
+# Kept on disk for future re-processing, not needed to run or deploy the site.
+Images:Video/
+
+# Dependencies (regenerate with `npm install`; package-lock.json is committed)
+node_modules/
+
+# macOS / exFAT cruft
+.DS_Store
+._*
+
+# Editor
+.vscode/
+.idea/

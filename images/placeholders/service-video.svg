@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" role="img" aria-label="VIDEO CONTENT placeholder">
+  <rect width="900" height="1100" fill="#0A0A0A"/>
+  <rect x="0.0" y="0" width="151.0" height="682.0" fill="#F6F5F1" opacity="0.9"/><rect x="150.0" y="0" width="151.0" height="682.0" fill="#D8FF3E" opacity="0.9"/><rect x="300.0" y="0" width="151.0" height="682.0" fill="#FF3B2F" opacity="0.9"/><rect x="450.0" y="0" width="151.0" height="682.0" fill="#2A2A2A" opacity="0.9"/><rect x="600.0" y="0" width="151.0" height="682.0" fill="#A6A39B" opacity="0.9"/><rect x="750.0" y="0" width="151.0" height="682.0" fill="#141414" opacity="0.9"/>
+  <rect x="0" y="682.0" width="900" height="418.0" fill="#0A0A0A"/>
+  <line x1="0" y1="682.0" x2="900" y2="682.0" stroke="#FF3B2F" stroke-width="2"/>
+  
+        <circle cx="450.0" cy="341.0" r="81.0" fill="#0A0A0A" opacity="0.55"/>
+        <circle cx="450.0" cy="341.0" r="81.0" fill="none" stroke="#F6F5F1" stroke-width="2"/>
+        <path d="M 421.65 300.5 L 421.65 381.5 L 494.55 341.0 Z" fill="#F6F5F1"/>
+        
+  <text x="450.0" y="858.0" font-family="monospace" font-size="40.5" fill="#F6F5F1" text-anchor="middle" letter-spacing="2">VIDEO CONTENT</text>
+  <text x="450.0" y="957.0" font-family="monospace" font-size="28.8" fill="#A6A39B" text-anchor="middle" letter-spacing="1">REPLACE WITH REEL STILL OR CLIP</text>
+</svg>

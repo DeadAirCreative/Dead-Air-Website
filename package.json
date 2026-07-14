@@ -1,0 +1,14 @@
+{
+  "name": "dead-air-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dead Air Creative Media — marketing website",
+  "scripts": {
+    "build:css": "tailwindcss -i ./css/input.css -o ./css/output.css --minify",
+    "watch:css": "tailwindcss -i ./css/input.css -o ./css/output.css --watch",
+    "serve": "python3 -m http.server 8080"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
+  }
+}

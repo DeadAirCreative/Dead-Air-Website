@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1250" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" role="img" aria-label="FOUNDER PHOTO placeholder">
+  <rect width="1000" height="1250" fill="#0A0A0A"/>
+  <rect x="0.0" y="0" width="167.7" height="775.0" fill="#F6F5F1" opacity="0.9"/><rect x="166.7" y="0" width="167.7" height="775.0" fill="#D8FF3E" opacity="0.9"/><rect x="333.3" y="0" width="167.7" height="775.0" fill="#FF3B2F" opacity="0.9"/><rect x="500.0" y="0" width="167.7" height="775.0" fill="#2A2A2A" opacity="0.9"/><rect x="666.7" y="0" width="167.7" height="775.0" fill="#A6A39B" opacity="0.9"/><rect x="833.3" y="0" width="167.7" height="775.0" fill="#141414" opacity="0.9"/>
+  <rect x="0" y="775.0" width="1000" height="475.0" fill="#0A0A0A"/>
+  <line x1="0" y1="775.0" x2="1000" y2="775.0" stroke="#FF3B2F" stroke-width="2"/>
+  
+  <text x="500.0" y="975.0" font-family="monospace" font-size="45.0" fill="#F6F5F1" text-anchor="middle" letter-spacing="2">FOUNDER PHOTO</text>
+  <text x="500.0" y="1087.5" font-family="monospace" font-size="32.0" fill="#A6A39B" text-anchor="middle" letter-spacing="1">REPLACE — 4:5 PORTRAIT</text>
+</svg>
