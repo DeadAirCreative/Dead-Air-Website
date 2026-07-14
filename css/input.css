@@ -155,6 +155,54 @@
     opacity: 1;
   }
 
+  /* Scroll-expansion hero (index.html) — defaults below describe the FINAL
+     (fully expanded) state so the hero still works with JS disabled and under
+     prefers-reduced-motion; main.js adds .hero-anim to #hero-track and drives
+     the collapsed→expanded interpolation from scroll position. The media frame
+     keeps the source reel's 9:16 portrait aspect (capped by viewport) rather
+     than stretching to a widescreen letterbox — cropping a vertical social
+     reel to landscape would throw away most of the frame and upscale to mush. */
+  .hero-sticky {
+    @apply sticky top-0 overflow-hidden flex items-center justify-center;
+    height: 100vh;
+    height: 100svh;
+  }
+  #hero-track.hero-static {
+    @apply h-auto;
+  }
+  #hero-track.hero-static .hero-sticky {
+    @apply relative;
+  }
+  .hero-media {
+    @apply relative z-10 overflow-hidden border border-border bg-ink;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.55);
+    height: min(82vh, 900px);
+    height: min(82svh, 900px);
+    width: min(92vw, calc(min(82vh, 900px) * 0.5625));
+    width: min(92vw, calc(min(82svh, 900px) * 0.5625));
+  }
+  .hero-media video {
+    @apply absolute inset-0 h-full w-full object-cover;
+  }
+  .hero-copy {
+    @apply absolute inset-x-0 bottom-0 z-30 flex flex-col items-center text-center container-px pb-10 pt-24;
+    background: linear-gradient(to top, rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.45) 55%, transparent);
+  }
+  .hero-anim .hero-copy {
+    @apply opacity-0 translate-y-6 pointer-events-none;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .hero-anim .hero-copy.is-visible {
+    @apply opacity-100 translate-y-0 pointer-events-auto;
+  }
+  /* Hint only makes sense while the scroll interaction exists */
+  #hero-hint {
+    display: none;
+  }
+  .hero-anim #hero-hint {
+    display: flex;
+  }
+
   /* Spotlight hover glow — cursor-tracked glow for cards + thumbnail frames.
      Position vars (--x/--y) are set once globally on :root (see main.js) in
      viewport px; background-attachment:fixed lets every spotlit element read

@@ -21,6 +21,92 @@
     );
   }
 
+  // Scroll-expansion hero (index.html) — the media frame grows from a small
+  // centred card to a near-full-height portrait frame as the page scrolls
+  // through the tall #hero-track; the sticky child pins the visuals while the
+  // track supplies the distance. Progress comes from scroll position rather
+  // than hijacked wheel/touch events (the usual React implementation of this
+  // pattern preventDefaults wheel+touchmove), so trackpads, touch, keyboard
+  // scrolling and scrollbar drags all behave identically and nothing can trap
+  // the user at the top of the page. Styles update synchronously — no rAF,
+  // which this project avoids (see spotlight note above).
+  var heroTrack = document.getElementById("hero-track");
+  if (heroTrack) {
+    var heroMedia = document.getElementById("hero-media");
+    var heroVideo = document.getElementById("hero-video");
+    var heroBg = document.getElementById("hero-bg");
+    var heroScrim = document.getElementById("hero-scrim");
+    var heroTitleLeft = document.getElementById("hero-title-left");
+    var heroTitleRight = document.getElementById("hero-title-right");
+    var heroEyebrow = document.getElementById("hero-eyebrow");
+    var heroHintLeft = document.getElementById("hero-hint-left");
+    var heroHintRight = document.getElementById("hero-hint-right");
+    var heroCopy = document.getElementById("hero-copy");
+    var reduceMotionHero = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotionHero) {
+      // Static hero: collapse the scroll track, show everything expanded,
+      // leave the video on its poster (no autoplaying motion).
+      heroTrack.classList.add("hero-static");
+    } else {
+      heroTrack.classList.add("hero-anim");
+
+      var heroUpdate = function () {
+        var rect = heroTrack.getBoundingClientRect();
+        var vh = window.innerHeight;
+        var vw = window.innerWidth;
+        var travel = rect.height - vh;
+        var p = travel > 0 ? Math.min(Math.max(-rect.top / travel, 0), 1) : 1;
+
+        var targetH = Math.min(vh * 0.82, 900);
+        var targetW = Math.min(vw * 0.92, targetH * 0.5625);
+        heroMedia.style.height = 400 + (targetH - 400) * p + "px";
+        heroMedia.style.width = 300 + (targetW - 300) * p + "px";
+
+        var slide = p * (vw < 768 ? 120 : 90);
+        heroTitleLeft.style.transform = "translateX(" + -slide + "vw)";
+        heroTitleRight.style.transform = "translateX(" + slide + "vw)";
+        heroHintLeft.style.transform = "translateX(" + -slide + "vw)";
+        heroHintRight.style.transform = "translateX(" + slide + "vw)";
+
+        heroBg.style.opacity = String(1 - p);
+        heroScrim.style.opacity = String(Math.max(0.45 - p * 0.45, 0));
+        heroEyebrow.style.opacity = String(Math.max(1 - p * 2.5, 0));
+        var hintFade = String(Math.max(1 - p * 1.6, 0));
+        heroHintLeft.style.opacity = hintFade;
+        heroHintRight.style.opacity = hintFade;
+
+        heroCopy.classList.toggle("is-visible", p > 0.85);
+      };
+
+      heroUpdate();
+      window.addEventListener("scroll", heroUpdate, { passive: true });
+      window.addEventListener("resize", heroUpdate);
+
+      var heroPlay = function () {
+        var pr = heroVideo.play();
+        if (pr && pr.catch) pr.catch(function () {});
+      };
+      heroPlay();
+      // Pause the loop while the hero is scrolled out of view
+      var heroInView = true;
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            heroInView = entry.isIntersecting;
+            if (heroInView) heroPlay();
+            else heroVideo.pause();
+          });
+        }, { threshold: 0.05 }).observe(heroTrack);
+      }
+      // Browsers pause muted autoplay when the tab is backgrounded or under
+      // power saving; resume when the user comes back to a visible hero.
+      document.addEventListener("visibilitychange", function () {
+        if (!document.hidden && heroInView) heroPlay();
+      });
+    }
+  }
+
   // Footer year
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();

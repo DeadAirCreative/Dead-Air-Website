@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 <link rel="canonical" href="https://www.deadaircreative.co.uk/">
-<link rel="stylesheet" href="css/output.css?v=1784071575">
+<link rel="stylesheet" href="css/output.css?v=1784072939">
 </head>
 <body>
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-signal focus:text-white focus:px-4 focus:py-3 focus:font-display focus:font-bold focus:uppercase">Skip to content</a>
@@ -56,19 +56,43 @@
 
 <main id="main">
 
-  <!-- HERO -->
-  <section class="relative min-h-[92vh] flex items-end overflow-hidden border-b border-border">
-    <div class="absolute inset-0 -z-10">
-      <img src="images/portfolio/home-hero.webp" alt="" class="h-full w-full object-cover opacity-70" width="2000" height="1333">
-      <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/40"></div>
-    </div>
-    <div class="container-px max-w-content mx-auto w-full pb-16 pt-40">
-      <p class="eyebrow mb-6 reveal"><span class="live-dot" aria-hidden="true"></span> Creative Media &middot; Local &amp; Independent Businesses</p>
-      <h1 class="text-hero uppercase text-paper max-w-5xl reveal" style="transition-delay:80ms">Content That Cuts Through The Noise.</h1>
-      <p class="mt-6 max-w-xl text-lg text-paper-muted reveal" style="transition-delay:160ms">Bold video, photography and graphic design for small businesses who are done blending in. We build the content that gets your business seen, booked and remembered.</p>
-      <div class="mt-10 flex flex-wrap gap-4 reveal" style="transition-delay:240ms">
-        <a href="contact.html" class="btn-primary">Get a Free Content Audit</a>
-        <a href="portfolio.html" class="btn-outline">See Our Work</a>
+  <!-- HERO — scroll-to-expand video (Nevuary jacket reel). The 240vh track
+       provides scroll distance; .hero-sticky pins the visuals while JS in
+       main.js maps scroll progress to the media frame's size, the split
+       headline and the background fade. Under prefers-reduced-motion (or
+       without JS) it renders as a static, fully-expanded hero instead. -->
+  <section id="hero-track" class="relative h-[240vh] border-b border-border">
+    <div class="hero-sticky">
+      <div id="hero-bg" class="absolute inset-0" aria-hidden="true">
+        <img src="images/portfolio/home-hero.webp" alt="" class="h-full w-full object-cover opacity-70" width="2000" height="1333">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/80 to-ink/40"></div>
+      </div>
+
+      <div id="hero-media" class="hero-media">
+        <video id="hero-video" src="images/portfolio/video/home-hero.mp4" poster="images/portfolio/home-hero-poster.webp" muted loop playsinline preload="auto" aria-hidden="true"></video>
+        <div id="hero-scrim" class="absolute inset-0 bg-ink/40"></div>
+      </div>
+
+      <div class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center pointer-events-none container-px">
+        <p id="hero-eyebrow" class="eyebrow mb-6"><span class="live-dot" aria-hidden="true"></span> Creative Media &middot; Local &amp; Independent Businesses</p>
+        <h1 class="text-hero uppercase text-paper">
+          <span id="hero-title-left" class="block">Content</span>
+          <span id="hero-title-right" class="block">That Cuts Through The Noise.</span>
+        </h1>
+      </div>
+
+      <div id="hero-hint" class="absolute inset-x-0 bottom-8 z-20 items-center justify-center gap-6 font-mono text-[11px] uppercase tracking-widest2 text-paper-muted" aria-hidden="true">
+        <span id="hero-hint-left">Nevuary &mdash; Jacket Drop</span>
+        <span class="text-signal">&bull;</span>
+        <span id="hero-hint-right">Scroll to expand</span>
+      </div>
+
+      <div id="hero-copy" class="hero-copy">
+        <p class="max-w-xl text-lg text-paper-muted">Bold video, photography and graphic design for small businesses who are done blending in. We build the content that gets your business seen, booked and remembered.</p>
+        <div class="mt-8 flex flex-wrap justify-center gap-4">
+          <a href="contact.html" class="btn-primary">Get a Free Content Audit</a>
+          <a href="portfolio.html" class="btn-outline">See Our Work</a>
+        </div>
       </div>
     </div>
   </section>
@@ -292,6 +316,6 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=1784071575"></script>
+<script src="js/main.js?v=1784072939"></script>
 </body>
 </html>
