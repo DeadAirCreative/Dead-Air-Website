@@ -51,6 +51,27 @@
     } else {
       heroTrack.classList.add("hero-anim");
 
+      // Split the headline into per-word spans so each word can fade/rise in
+      // on its own slice of the scroll progress. The full sentence stays on
+      // the h1 as an aria-label (and in the DOM for crawlers); the visual
+      // spans are marked aria-hidden so screen readers hear one clean phrase.
+      var heroWords = [];
+      var heroTitle = heroTitleLeft.parentElement;
+      heroTitle.setAttribute("aria-label", heroTitle.textContent.replace(/\s+/g, " ").trim());
+      [heroTitleLeft, heroTitleRight].forEach(function (line) {
+        var words = line.textContent.trim().split(/\s+/);
+        line.textContent = "";
+        line.setAttribute("aria-hidden", "true");
+        words.forEach(function (word, i) {
+          var span = document.createElement("span");
+          span.className = "hero-word";
+          span.textContent = word;
+          line.appendChild(span);
+          if (i < words.length - 1) line.appendChild(document.createTextNode(" "));
+          heroWords.push(span);
+        });
+      });
+
       var heroUpdate = function () {
         var rect = heroTrack.getBoundingClientRect();
         var vh = window.innerHeight;
@@ -63,18 +84,33 @@
         heroMedia.style.height = 400 + (targetH - 400) * p + "px";
         heroMedia.style.width = 300 + (targetW - 300) * p + "px";
 
+        // Eyebrow leads the reveal, then the headline builds word by word
+        // across the scroll, settling fully visible over the expanded reel.
+        var eq = Math.min(Math.max((p - 0.02) / 0.1, 0), 1);
+        heroEyebrow.style.opacity = String(eq);
+        heroEyebrow.style.transform = "translateY(" + (1 - eq) * 10 + "px)";
+
+        var revealStart = 0.08;
+        var revealSpan = 0.62;
+        var wordWindow = 0.16;
+        for (var i = 0; i < heroWords.length; i++) {
+          var q = (p - (revealStart + (revealSpan * i) / heroWords.length)) / wordWindow;
+          q = q < 0 ? 0 : q > 1 ? 1 : q;
+          heroWords[i].style.opacity = String(q);
+          heroWords[i].style.transform = "translateY(" + (1 - q) * 0.45 + "em)";
+        }
+
         var slide = p * (vw < 768 ? 120 : 90);
-        heroTitleLeft.style.transform = "translateX(" + -slide + "vw)";
-        heroTitleRight.style.transform = "translateX(" + slide + "vw)";
         heroHintLeft.style.transform = "translateX(" + -slide + "vw)";
         heroHintRight.style.transform = "translateX(" + slide + "vw)";
-
-        heroBg.style.opacity = String(1 - p);
-        heroScrim.style.opacity = String(Math.max(0.45 - p * 0.45, 0));
-        heroEyebrow.style.opacity = String(Math.max(1 - p * 2.5, 0));
         var hintFade = String(Math.max(1 - p * 1.6, 0));
         heroHintLeft.style.opacity = hintFade;
         heroHintRight.style.opacity = hintFade;
+
+        heroBg.style.opacity = String(1 - p);
+        // Scrim deepens slightly as the headline lands so white text stays
+        // legible over the brightest video moments.
+        heroScrim.style.opacity = String(0.25 + p * 0.15);
 
         heroCopy.classList.toggle("is-visible", p > 0.85);
       };
