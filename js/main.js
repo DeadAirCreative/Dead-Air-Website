@@ -1,21 +1,31 @@
 (function () {
   "use strict";
 
-  // Spotlight hover glow (.spotlight cards/thumbnails) — one global pointermove
-  // listener sets --x/--y in viewport px on :root; every .spotlight element reads
-  // the same vars via background-attachment:fixed, so this scales to any number
-  // of cards without per-element listeners. Skipped entirely on touch-only devices
-  // and under prefers-reduced-motion, since there's no hover/cursor to track.
-  var hasSpotlightTargets = document.querySelector(".spotlight, .card, .portfolio-card");
+  // Spotlight outline glow (.spotlight/.card/.portfolio-card) — one global
+  // pointermove listener writes the cursor position into each box's own
+  // --x/--y in ELEMENT-LOCAL px. An earlier version set viewport coords once
+  // on :root and had every box read them via background-attachment:fixed, but
+  // fixed-attachment backgrounds re-anchor to any transformed/filtered
+  // ancestor instead of the viewport — .reveal alone leaves a permanent
+  // translateY(0) transform after animating in — which silently misplaced the
+  // glow on pages whose boxes sit inside such subtrees. Local coords make the
+  // glow immune to transforms anywhere in the tree. ~20 rect reads per move
+  // with no interleaved writes that invalidate layout, so there's no thrash.
+  // Skipped entirely on touch-only devices and under prefers-reduced-motion,
+  // since there's no hover/cursor to track.
+  var spotlightEls = document.querySelectorAll(".spotlight, .card, .portfolio-card");
   var supportsHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
   var reduceMotionSpotlight = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (hasSpotlightTargets && supportsHover && !reduceMotionSpotlight) {
-    var rootStyle = document.documentElement.style;
+  if (spotlightEls.length && supportsHover && !reduceMotionSpotlight) {
     document.addEventListener(
       "pointermove",
       function (e) {
-        rootStyle.setProperty("--x", e.clientX + "px");
-        rootStyle.setProperty("--y", e.clientY + "px");
+        for (var i = 0; i < spotlightEls.length; i++) {
+          var el = spotlightEls[i];
+          var r = el.getBoundingClientRect();
+          el.style.setProperty("--x", e.clientX - r.left - el.clientLeft + "px");
+          el.style.setProperty("--y", e.clientY - r.top - el.clientTop + "px");
+        }
       },
       { passive: true }
     );
@@ -79,10 +89,38 @@
         var travel = rect.height - vh;
         var p = travel > 0 ? Math.min(Math.max(-rect.top / travel, 0), 1) : 1;
 
-        var targetH = Math.min(vh * 0.82, 900);
-        var targetW = Math.min(vw * 0.92, targetH * 0.5625);
-        heroMedia.style.height = 400 + (targetH - 400) * p + "px";
-        heroMedia.style.width = 300 + (targetW - 300) * p + "px";
+        // The frame opens as a tall centre column and expands out from the
+        // sides (the object-cover crop reveals the reel's edges as the width
+        // grows), rather than a small card inflating in both directions.
+        // Desktop keeps the reel's native 16:9; mobile crops to 4:5 portrait,
+        // because a landscape strip on a phone is a sliver of screen and the
+        // headline dwarfs it. hwRatio is height/width.
+        var mobile = vw < 768;
+        var hwRatio = mobile ? 1.25 : 0.5625;
+        var maxH = Math.min(vh * 0.82, 900);
+        var targetW = Math.min(vw * 0.92, maxH / hwRatio);
+        var targetH = targetW * hwRatio;
+        var startW = vw * (mobile ? 0.62 : 0.38);
+        var startH = targetH * (mobile ? 0.92 : 0.88);
+        var frameH = startH + (targetH - startH) * p;
+        heroMedia.style.width = startW + (targetW - startW) * p + "px";
+        heroMedia.style.height = frameH + "px";
+
+        // On mobile the eyebrow lives in the black band above the frame, not
+        // over the video: centre it vertically between the header and the
+        // (vertically centred) frame's top edge so it tracks the frame at any
+        // phone height, clamped so it never tucks under the 80px header.
+        // Desktop keeps it in the centred title stack (clear the overrides).
+        if (mobile) {
+          var frameTop = (vh - frameH) / 2;
+          var ebTop = (81 + frameTop) / 2 - (heroEyebrow.offsetHeight || 32) / 2;
+          if (ebTop < 84) ebTop = 84;
+          heroEyebrow.style.top = ebTop + "px";
+          heroEyebrow.style.bottom = "auto";
+        } else {
+          heroEyebrow.style.top = "";
+          heroEyebrow.style.bottom = "";
+        }
 
         // Eyebrow leads the reveal, then the headline builds word by word
         // across the scroll, settling fully visible over the expanded reel.
@@ -117,6 +155,10 @@
 
       heroUpdate();
       window.addEventListener("scroll", heroUpdate, { passive: true });
+      // Fast flick-scrolls can throttle away the final scroll event in some
+      // browsers, freezing the headline mid-fade; scrollend guarantees one
+      // last correct update where supported.
+      window.addEventListener("scrollend", heroUpdate);
       window.addEventListener("resize", heroUpdate);
 
       var heroPlay = function () {
@@ -186,6 +228,7 @@
     };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scrollend", onScroll);
   }
 
   // Scroll reveal — rAF-throttled bounding-rect check (avoids relying solely on
@@ -308,34 +351,132 @@
     var lbCloseBtn = document.getElementById("lightbox-close-btn");
     var lastFocused = null;
 
+    // Full-size viewer (opens from any gallery tile; steps through the whole
+    // project). Refs exist only on portfolio.html, alongside #lightbox.
+    var viewer = document.getElementById("media-viewer");
+    var viewerStage = document.getElementById("viewer-stage");
+    var viewerCounter = document.getElementById("viewer-counter");
+    var viewerPrev = document.getElementById("viewer-prev");
+    var viewerNext = document.getElementById("viewer-next");
+    var currentMedia = [];
+    var currentIndex = 0;
+
+    // A tile's poster/first-frame element. Videos use preload="metadata" plus a
+    // #t=0.1 fragment so a still frame shows even without a generated poster;
+    // the mosaic projects hold at most ~11 videos, so this stays cheap.
+    var buildThumb = function (item, i, project) {
+      var el;
+      if (item.type === "video") {
+        el = document.createElement("video");
+        el.src = item.src + (item.src.indexOf("#") === -1 ? "#t=0.1" : "");
+        if (item.poster) el.poster = item.poster;
+        el.muted = true;
+        el.playsInline = true;
+        el.tabIndex = -1;
+        el.setAttribute("preload", "metadata");
+      } else {
+        el = document.createElement("img");
+        el.src = item.src;
+        el.loading = "lazy";
+        el.alt = project.title + " image " + (i + 1);
+      }
+      return el;
+    };
+
+    var playBadge = function () {
+      var b = document.createElement("span");
+      b.className = "pointer-events-none absolute inset-0 flex items-center justify-center";
+      b.innerHTML = '<span class="flex h-11 w-11 items-center justify-center rounded-full bg-ink/70 backdrop-blur border border-paper/40"><svg class="h-4 w-4 text-paper" style="margin-left:2px" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>';
+      return b;
+    };
+
+    var makeTile = function (item, i, project, className) {
+      var tile = document.createElement("button");
+      tile.type = "button";
+      tile.className = className;
+      tile.appendChild(buildThumb(item, i, project));
+      if (item.type === "video") tile.appendChild(playBadge());
+      tile.addEventListener("click", function () { openViewer(i); });
+      return tile;
+    };
+
+    // Large projects use a dense square mosaic (contact sheet) so a 184-item
+    // set doesn't take forever to scroll; a 2x2 feature on a steady cadence and
+    // tall video tiles keep it from reading as a flat grid. Smaller projects
+    // keep the roomy uncropped columns. Threshold: more than 12 items.
+    var MOSAIC_MIN = 13;
+
     var renderProjectMedia = function (project) {
       lbMedia.innerHTML = "";
+      var mosaic = project.media.length >= MOSAIC_MIN;
+      lbMedia.className = "container-px max-w-content mx-auto py-10 sm:py-14 " +
+        (mosaic ? "lightbox-mosaic" : "lightbox-columns");
       var frag = document.createDocumentFragment();
       project.media.forEach(function (item, i) {
-        var el;
-        if (item.type === "video") {
-          el = document.createElement("video");
-          el.src = item.src;
-          if (item.poster) el.poster = item.poster;
-          el.controls = true;
-          el.playsInline = true;
-          el.muted = true;
-          el.setAttribute("preload", "none");
+        var cls;
+        if (mosaic) {
+          cls = "mosaic-item";
+          if (item.type === "video") cls += " mosaic-item--tall";
+          else if (i === 0 || i % 11 === 5) cls += " mosaic-item--feature";
         } else {
-          el = document.createElement("img");
-          el.src = item.src;
-          el.loading = "lazy";
-          el.alt = project.title + " — image " + (i + 1);
+          cls = "column-item";
         }
-        el.className = "mb-4 block w-full h-auto border border-border break-inside-avoid bg-surface";
-        frag.appendChild(el);
+        frag.appendChild(makeTile(item, i, project, cls));
       });
       lbMedia.appendChild(frag);
+    };
+
+    var renderViewerItem = function () {
+      viewerStage.innerHTML = "";
+      var item = currentMedia[currentIndex];
+      if (!item) return;
+      var el;
+      if (item.type === "video") {
+        el = document.createElement("video");
+        el.src = item.src;
+        if (item.poster) el.poster = item.poster;
+        el.controls = true;
+        el.autoplay = true;
+        el.loop = true;
+        el.muted = true;
+        el.playsInline = true;
+        el.setAttribute("preload", "auto");
+        var pr = el.play();
+        if (pr && pr.catch) pr.catch(function () {});
+      } else {
+        el = document.createElement("img");
+        el.src = item.src;
+        el.alt = "";
+      }
+      el.className = "max-h-full max-w-full object-contain border border-border";
+      viewerStage.appendChild(el);
+      viewerCounter.textContent = (currentIndex + 1) + " / " + currentMedia.length;
+      var many = currentMedia.length > 1;
+      viewerPrev.style.display = many ? "" : "none";
+      viewerNext.style.display = many ? "" : "none";
+    };
+
+    var openViewer = function (index) {
+      currentIndex = index;
+      renderViewerItem();
+      viewer.classList.remove("hidden");
+    };
+
+    var closeViewer = function () {
+      viewer.classList.add("hidden");
+      viewerStage.innerHTML = "";
+    };
+
+    var viewerStep = function (dir) {
+      if (!currentMedia.length) return;
+      currentIndex = (currentIndex + dir + currentMedia.length) % currentMedia.length;
+      renderViewerItem();
     };
 
     var openLightbox = function (projectId) {
       if (!PORTFOLIO_PROJECTS[projectId]) return;
       var project = PORTFOLIO_PROJECTS[projectId];
+      currentMedia = project.media;
       lbTitle.textContent = project.title;
       lbTag.textContent = project.tag;
       lbDescription.textContent = project.description || "";
@@ -349,11 +490,23 @@
     };
 
     var closeLightbox = function () {
+      closeViewer();
       lightbox.classList.add("hidden");
       lbMedia.innerHTML = "";
       document.body.classList.remove("overflow-hidden");
       if (lastFocused && lastFocused.focus) lastFocused.focus();
     };
+
+    if (viewerPrev) viewerPrev.addEventListener("click", function () { viewerStep(-1); });
+    if (viewerNext) viewerNext.addEventListener("click", function () { viewerStep(1); });
+    document.querySelectorAll("[data-viewer-close]").forEach(function (el) {
+      el.addEventListener("click", closeViewer);
+    });
+    if (viewer) {
+      viewer.addEventListener("click", function (e) {
+        if (e.target === viewer || e.target === viewerStage) closeViewer();
+      });
+    }
 
     document.querySelectorAll(".portfolio-card").forEach(function (card) {
       card.addEventListener("click", function () {
@@ -364,6 +517,12 @@
       el.addEventListener("click", closeLightbox);
     });
     document.addEventListener("keydown", function (e) {
+      if (viewer && !viewer.classList.contains("hidden")) {
+        if (e.key === "Escape") closeViewer();
+        else if (e.key === "ArrowLeft") viewerStep(-1);
+        else if (e.key === "ArrowRight") viewerStep(1);
+        return;
+      }
       if (lightbox.classList.contains("hidden")) return;
       if (e.key === "Escape") closeLightbox();
     });

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Portfolio | Dead Air Creative Media</title>
-<meta name="description" content="Video, photography and graphic design work from Dead Air Creative Media — bold content built for local small businesses.">
+<meta name="description" content="Video, photography and graphic design work from Dead Air Creative Media. Bold content built for businesses that want to stand out.">
 <meta property="og:title" content="Portfolio | Dead Air Creative Media">
 <meta property="og:description" content="Video, photography and graphic design work from Dead Air Creative Media.">
 <meta property="og:type" content="website">
@@ -13,8 +13,8 @@
 <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
-<link rel="canonical" href="https://www.deadaircreative.co.uk/portfolio.html">
-<link rel="stylesheet" href="css/output.css?v=1784074016">
+<link rel="canonical" href="https://www.deadaircreative.net/portfolio.html">
+<link rel="stylesheet" href="css/output.css?v=1784292882">
 </head>
 <body>
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-signal focus:text-white focus:px-4 focus:py-3 focus:font-display focus:font-bold focus:uppercase">Skip to content</a>
@@ -58,7 +58,7 @@
 
   <!-- PAGE HERO -->
   <section class="relative pt-40 pb-16 border-b border-border container-px max-w-content mx-auto">
-    <span class="hidden lg:block absolute top-1/2 right-6 -translate-y-1/2 origin-right -rotate-90 font-mono text-[11px] uppercase tracking-widest2 text-paper-muted/60 whitespace-nowrap">10 Projects &mdash; 291 Pieces Of Work</span>
+    <span class="hidden lg:block absolute top-1/2 right-6 -translate-y-1/2 origin-right -rotate-90 font-mono text-[11px] uppercase tracking-widest2 text-paper-muted/60 whitespace-nowrap">10 Projects &middot; 291 Pieces Of Work</span>
     <p class="eyebrow mb-6"><span class="live-dot" aria-hidden="true"></span> Portfolio</p>
     <h1 class="text-display-lg uppercase max-w-3xl">Work That Speaks For Itself.</h1>
     <p class="mt-6 max-w-xl text-lg text-paper-muted font-serif italic">A look at the video, photography and design work coming out of Dead Air. Filter by craft or scroll through everything.</p>
@@ -132,7 +132,7 @@
 
       <div class="col-span-full bg-signal text-ink flex flex-wrap items-center justify-between gap-6 px-6 sm:px-12 py-10 sm:py-14" style="width:100vw; margin-left:calc(50% - 50vw); margin-right:calc(50% - 50vw);">
         <p class="font-display font-bold uppercase leading-[0.9] text-[clamp(2.5rem,9vw,6rem)]">291 Pieces<br>Of Proof.</p>
-        <p class="max-w-xs font-display font-bold uppercase text-sm sm:text-base tracking-wide">And counting. Every shoot, every edit, every client — this is what showing up actually looks like.</p>
+        <p class="max-w-xs font-display font-bold uppercase text-sm sm:text-base tracking-wide">And counting. Every shoot, every edit, every client. This is what showing up actually looks like.</p>
       </div>
 
       <button type="button" data-category="photography" data-project="portrait" class="portfolio-card">
@@ -194,7 +194,7 @@
       <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
     </button>
 
-    <span class="hidden lg:block fixed top-1/2 left-6 -translate-y-1/2 origin-left -rotate-90 font-mono text-[11px] uppercase tracking-widest2 text-paper-muted/60 whitespace-nowrap">Selected Work &mdash; Dead Air</span>
+    <span class="hidden lg:block fixed top-1/2 left-6 -translate-y-1/2 origin-left -rotate-90 font-mono text-[11px] uppercase tracking-widest2 text-paper-muted/60 whitespace-nowrap">Selected Work &middot; Dead Air</span>
 
     <div class="border-b border-border relative overflow-hidden">
       <div class="absolute inset-0 bg-gradient-to-br from-signal/15 via-transparent to-transparent pointer-events-none"></div>
@@ -206,7 +206,23 @@
       </div>
     </div>
 
-    <div id="lightbox-media" class="container-px max-w-content mx-auto py-10 sm:py-14 columns-1 sm:columns-2 lg:columns-3 gap-4"></div>
+    <div id="lightbox-media" class="container-px max-w-content mx-auto py-10 sm:py-14 lightbox-columns"></div>
+  </div>
+
+  <!-- FULL-SIZE MEDIA VIEWER — opened from any gallery tile; steps through the
+       whole project with prev/next so cropped mosaic thumbs never lose detail. -->
+  <div id="media-viewer" class="fixed inset-0 z-[110] hidden bg-ink/95 backdrop-blur-sm" role="dialog" aria-modal="true" aria-label="Media viewer">
+    <button type="button" id="viewer-close" data-viewer-close class="absolute top-5 right-5 sm:top-8 sm:right-10 z-20 h-12 w-12 flex items-center justify-center border border-border bg-ink/80 backdrop-blur text-paper hover:border-signal hover:text-signal transition-colors" aria-label="Close viewer">
+      <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+    <button type="button" id="viewer-prev" class="viewer-nav-btn left-4 sm:left-8" aria-label="Previous item">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 6l-6 6 6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button type="button" id="viewer-next" class="viewer-nav-btn right-4 sm:right-8" aria-label="Next item">
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div id="viewer-stage" class="absolute inset-0 flex items-center justify-center p-6 pt-20 pb-16 sm:p-16"></div>
+    <p id="viewer-counter" class="absolute bottom-5 left-1/2 -translate-x-1/2 font-mono text-xs uppercase tracking-widest2 text-paper-muted"></p>
   </div>
 
   <!-- FINAL CTA -->
@@ -230,7 +246,7 @@
         <span class="absolute left-[51.8%] top-[59.2%] h-[6px] w-[6px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-signal shadow-[0_0_8px_2px_rgba(255,59,47,0.85)] animate-pulse-dot" aria-hidden="true"></span>
       </span> Dead Air
       </a>
-      <p class="mt-4 text-paper-muted max-w-sm">Content that cuts through the noise. Bold video, photography and graphic design for local small businesses who want to stand out.</p>
+      <p class="mt-4 text-paper-muted max-w-sm">Content that cuts through the noise. Bold video, photography and graphic design for businesses that want to stand out.</p>
       <div class="flex items-center gap-4 mt-6">
         <a href="#" aria-label="Dead Air on Instagram" class="text-paper-muted hover:text-paper transition-colors"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
         <a href="#" aria-label="Dead Air on TikTok" class="text-paper-muted hover:text-paper transition-colors"><svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><path d="M14 4v9.5a3.5 3.5 0 11-3-3.46" stroke-linecap="round"/><path d="M14 4a5 5 0 005 5" stroke-linecap="round"/></svg></a>
@@ -251,9 +267,9 @@
     <div>
       <h3 class="font-display text-sm font-bold uppercase tracking-wide mb-4">Get In Touch</h3>
       <ul class="space-y-3 text-paper-muted">
-        <li><a href="mailto:hello@deadaircreative.co.uk" class="hover:text-paper transition-colors">hello@deadaircreative.co.uk</a></li>
+        <li><a href="mailto:hello@deadaircreative.net" class="hover:text-paper transition-colors">hello@deadaircreative.net</a></li>
         <li><a href="tel:+441234567890" class="hover:text-paper transition-colors">01234 567 890</a></li>
-        <li>Serving [Your Town/Region] &amp; surrounding areas</li>
+        <li>Serving businesses across Ireland &amp; Northern Ireland</li>
       </ul>
     </div>
   </div>
@@ -265,7 +281,7 @@
   </div>
 </footer>
 
-<script src="js/portfolio-data.js?v=1784074016"></script>
-<script src="js/main.js?v=1784074016"></script>
+<script src="js/portfolio-data.js?v=1784292882"></script>
+<script src="js/main.js?v=1784292882"></script>
 </body>
 </html>

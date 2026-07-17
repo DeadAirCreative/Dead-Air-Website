@@ -164,6 +164,67 @@
     opacity: 1;
   }
 
+  /* Project gallery layouts (portfolio lightbox). Small projects flow as
+     roomy uncropped columns; large projects (threshold in main.js) switch to
+     a dense mosaic contact sheet so a 184-item project doesn't take forever
+     to scroll: square crops, a 2x2 feature tile on a fixed cadence, videos as
+     tall tiles, dense flow to backfill holes. Square 1x1 tiles drive the
+     implicit row height, so spanning tiles stretch to fit without their own
+     aspect ratio. Every tile opens the uncropped original in #media-viewer. */
+  .lightbox-columns {
+    @apply columns-1 sm:columns-2 lg:columns-3 gap-4;
+  }
+  .lightbox-mosaic {
+    @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-1.5;
+    grid-auto-flow: dense;
+  }
+  .mosaic-item {
+    @apply relative block w-full overflow-hidden border border-border bg-surface aspect-square cursor-zoom-in p-0;
+    transition: border-color 0.25s ease-out, transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  /* Feature stays square (inherits aspect-square) and just spans 2x2: a
+     2-column-wide square is exactly as tall as two stacked 1-column squares
+     plus the gap between them, so it lines up perfectly with the implicit
+     rows. Tall drops the aspect and fills its 2 spanned rows (portrait video). */
+  .mosaic-item--feature {
+    @apply col-span-2 row-span-2;
+  }
+  /* Explicit portrait ratio (not auto): consecutive video tiles can fill whole
+     rows, and an unloaded <video> has no intrinsic height, so `auto` let those
+     rows collapse to nothing. 1/2 makes the tile self-size to ~2 square rows,
+     keeping the grid intact before any video metadata loads. */
+  .mosaic-item--tall {
+    @apply row-span-2;
+    aspect-ratio: 1 / 2;
+  }
+  .mosaic-item > img,
+  .mosaic-item > video {
+    @apply absolute inset-0 h-full w-full object-cover;
+    transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s;
+  }
+  .mosaic-item:hover {
+    @apply border-signal;
+    z-index: 1;
+  }
+  .mosaic-item:hover > img,
+  .mosaic-item:hover > video {
+    transform: scale(1.04);
+  }
+  .column-item {
+    @apply relative mb-4 block w-full cursor-zoom-in border border-border bg-surface break-inside-avoid p-0;
+    transition: border-color 0.25s ease-out;
+  }
+  .column-item:hover {
+    @apply border-signal;
+  }
+  .column-item > img,
+  .column-item > video {
+    @apply block w-full h-auto;
+  }
+  .viewer-nav-btn {
+    @apply absolute top-1/2 -translate-y-1/2 z-10 flex h-12 w-12 items-center justify-center border border-border bg-ink/80 backdrop-blur text-paper hover:border-signal hover:text-signal transition-colors;
+  }
+
   /* Scroll-expansion hero (index.html) — defaults below describe the FINAL
      (fully expanded) state so the hero still works with JS disabled and under
      prefers-reduced-motion; main.js adds .hero-anim to #hero-track and drives
@@ -185,10 +246,62 @@
   .hero-media {
     @apply relative z-10 overflow-hidden border border-border bg-ink;
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.55);
-    height: min(82vh, 900px);
-    height: min(82svh, 900px);
-    width: min(92vw, calc(min(82vh, 900px) * 0.5625));
-    width: min(92vw, calc(min(82svh, 900px) * 0.5625));
+    /* 16:9 to match the showreel; JS overrides per scroll, this is the
+       expanded no-JS/reduced-motion default */
+    aspect-ratio: 16 / 9;
+    width: min(92vw, calc(min(82vh, 900px) * 1.7778));
+    width: min(92vw, calc(min(82svh, 900px) * 1.7778));
+  }
+  /* Mobile: a landscape strip is a sliver of a phone screen, so the frame
+     crops the reel to 4:5 portrait instead (matches the JS branch), and the
+     overlay type calms down so the words sit inside the frame like a poster
+     rather than spilling past a small video. */
+  @media (max-width: 767px) {
+    .hero-media {
+      aspect-ratio: 4 / 5;
+      width: min(92vw, calc(min(82vh, 900px) * 0.8));
+      width: min(92vw, calc(min(82svh, 900px) * 0.8));
+    }
+    .hero-sticky h1 {
+      font-size: 2.25rem;
+    }
+    .hero-sticky .eyebrow {
+      letter-spacing: 0.16em;
+    }
+    /* When the eyebrow wraps to two centred lines, the flexed live-dot sits
+       detached at the far left of the block and reads as a stray mark */
+    .hero-sticky .eyebrow .live-dot {
+      display: none;
+    }
+    /* The red eyebrow moves OUT of the centred title stack and into the black
+       band above the video frame. JS (heroUpdate) pins its bottom just above
+       the frame's top edge so it tracks the frame at any phone height; the top
+       value here is only the no-JS / reduced-motion fallback. */
+    #hero-eyebrow {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 14vh;
+      margin: 0;
+      /* absolute positioning drops the parent's container-px, so restore side
+         padding or the long eyebrow runs edge to edge */
+      padding: 0 1.5rem;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+    /* With the eyebrow now absolute, the headline centres on its own; lift it
+       into the upper third via its own transform (not container padding, which
+       would shift the absolute eyebrow's anchor) so the tall end-state copy
+       block below never rises into the headline's last line. */
+    #hero-titles h1 {
+      transform: translateY(-13vh);
+    }
+    #hero-hint {
+      font-size: 10px;
+      gap: 0.75rem;
+      letter-spacing: 0.16em;
+    }
   }
   .hero-media video {
     @apply absolute inset-0 h-full w-full object-cover;
@@ -206,9 +319,13 @@
   }
   /* Headline words revealed individually by scroll progress (see main.js);
      spans only exist once JS splits the h1, so no-JS/reduced-motion keeps the
-     plain, fully-visible headline. */
+     plain, fully-visible headline. The short transition smooths the jumps
+     between sparse scroll events (fast flicks fire few of them) so words
+     glide to their target state instead of snapping or freezing mid-fade. */
   .hero-word {
     display: inline-block;
+    will-change: opacity, transform;
+    transition: opacity 0.12s linear, transform 0.12s linear;
   }
 
   /* Hint only makes sense while the scroll interaction exists */
@@ -221,17 +338,21 @@
 
   /* Spotlight glow — cursor-tracked glow along each box's OUTLINE only (no
      inner wash, no blanket border-colour change; the earlier inside-the-box
-     version read as tacky). Position vars (--x/--y) are set once globally on
-     :root (see main.js) in viewport px; background-attachment:fixed lets every
-     element read the same coordinate without per-element math. Two pseudo
+     version read as tacky). Position vars (--x/--y) are ELEMENT-LOCAL px,
+     written per box by the pointermove listener in main.js. Deliberately NOT
+     background-attachment:fixed + viewport coords: fixed backgrounds re-anchor
+     to any transformed/filtered ancestor (e.g. .reveal's leftover translate),
+     which misplaced the glow on pages using reveal animations. Two pseudo
      rings — a soft blurred bloom (::before) under a crisp 1px core (::after) —
      are cut down to just the border ring with the standard gradient-border
-     mask (padding-box XOR border-box). Edges light up as the cursor passes
-     near them; hovering the box itself grows the glow radius (~2.3x) via the
-     registered --glow-r custom property (see @property above @tailwind).
-     Browsers without mask-composite get no glow at all — clean degradation,
-     never an unmasked full-box gradient. Brand red only. Applies to .spotlight,
-     .card and .portfolio-card. */
+     mask (padding-box XOR border-box); background-origin:border-box keeps
+     both pseudos' gradient coords in the same space despite their different
+     border widths. Edges light up as the cursor passes near them; hovering
+     the box itself grows the glow radius (~2.3x) via the registered --glow-r
+     custom property (see @property above @tailwind). Browsers without
+     mask-composite get no glow at all — clean degradation, never an unmasked
+     full-box gradient. Brand red only. Applies to .spotlight, .card and
+     .portfolio-card. */
   .spotlight,
   .card,
   .portfolio-card {
@@ -257,7 +378,7 @@
       position: absolute;
       inset: 0;
       background-repeat: no-repeat;
-      background-attachment: fixed;
+      background-origin: border-box;
       -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
