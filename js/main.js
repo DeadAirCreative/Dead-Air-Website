@@ -354,10 +354,14 @@
     });
   });
 
-  // Contact form (contact.html) — front-end validation + no-backend fallback
+  // Contact form (contact.html) — front-end validation, then a real submit
+  // to Web3Forms (see the hidden access_key input in contact.html). Web3Forms
+  // accepts a plain multipart FormData POST and emails the result straight
+  // to the account tied to that key, so no backend of our own is needed.
   var form = document.getElementById("contact-form");
   if (form) {
     var status = document.getElementById("form-status");
+    var submitBtn = form.querySelector("button[type='submit']");
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var required = form.querySelectorAll("[required]");
@@ -380,11 +384,38 @@
         }
         return;
       }
+      if (submitBtn) submitBtn.disabled = true;
       if (status) {
-        status.textContent = "Thanks — your message is in. We'll be in touch within one business day.";
-        status.className = "mt-6 text-acid font-medium";
+        status.textContent = "Sending...";
+        status.className = "mt-6 text-paper-muted font-medium";
       }
-      form.reset();
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      })
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (status) {
+            if (data.success) {
+              status.textContent = "Thanks, your message is in. We'll be in touch within one business day.";
+              status.className = "mt-6 text-acid font-medium";
+              form.reset();
+            } else {
+              status.textContent = "Something went wrong sending that. Please email hello@deadaircreative.net directly.";
+              status.className = "mt-6 text-signal font-medium";
+            }
+          }
+        })
+        .catch(function () {
+          if (status) {
+            status.textContent = "Something went wrong sending that. Please email hello@deadaircreative.net directly.";
+            status.className = "mt-6 text-signal font-medium";
+          }
+        })
+        .finally(function () {
+          if (submitBtn) submitBtn.disabled = false;
+        });
     });
   }
 
