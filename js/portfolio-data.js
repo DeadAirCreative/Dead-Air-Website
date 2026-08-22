@@ -6,51 +6,6 @@ var PORTFOLIO_PROJECTS = {
     "description": "A full campaign for Nevuary's racing jacket drop, from studio product shots to street-style campaign photography and short-form video across two locations. We built a visual world that matched the brand's motorsport-meets-streetwear identity, shot to move fast across Instagram and TikTok.",
     "media": [
       {
-        "type": "video",
-        "src": "images/portfolio/video/full/nevuary/001.mp4",
-        "poster": "images/portfolio/nevuary.webp"
-      },
-      {
-        "type": "video",
-        "src": "images/portfolio/video/full/nevuary/002.mp4"
-      },
-      {
-        "type": "video",
-        "src": "images/portfolio/video/full/nevuary/003.mp4"
-      },
-      {
-        "type": "video",
-        "src": "images/portfolio/video/full/nevuary/004.mp4"
-      },
-      {
-        "type": "video",
-        "src": "images/portfolio/video/full/nevuary/005.mp4"
-      },
-      {
-        "type": "video",
-        "src": "images/portfolio/video/full/nevuary/006.mp4"
-      },
-      {
-        "type": "video",
-        "src": "images/portfolio/video/full/nevuary/007.mp4"
-      },
-      {
-        "type": "video",
-        "src": "images/portfolio/video/full/nevuary/008.mp4"
-      },
-      {
-        "type": "video",
-        "src": "images/portfolio/video/full/nevuary/009.mp4"
-      },
-      {
-        "type": "video",
-        "src": "images/portfolio/video/full/nevuary/010.mp4"
-      },
-      {
-        "type": "video",
-        "src": "images/portfolio/video/full/nevuary/011.mp4"
-      },
-      {
         "type": "image",
         "src": "images/portfolio/full/nevuary/001.webp"
       },
@@ -61,6 +16,11 @@ var PORTFOLIO_PROJECTS = {
       {
         "type": "image",
         "src": "images/portfolio/full/nevuary/003.webp"
+      },
+      {
+        "type": "video",
+        "src": "images/portfolio/video/full/nevuary/001.mp4",
+        "poster": "images/portfolio/nevuary.webp"
       },
       {
         "type": "image",
@@ -83,6 +43,10 @@ var PORTFOLIO_PROJECTS = {
         "src": "images/portfolio/full/nevuary/008.webp"
       },
       {
+        "type": "video",
+        "src": "images/portfolio/video/full/nevuary/002.mp4"
+      },
+      {
         "type": "image",
         "src": "images/portfolio/full/nevuary/009.webp"
       },
@@ -97,6 +61,10 @@ var PORTFOLIO_PROJECTS = {
       {
         "type": "image",
         "src": "images/portfolio/full/nevuary/012.webp"
+      },
+      {
+        "type": "video",
+        "src": "images/portfolio/video/full/nevuary/003.mp4"
       },
       {
         "type": "image",
@@ -119,6 +87,10 @@ var PORTFOLIO_PROJECTS = {
         "src": "images/portfolio/full/nevuary/017.webp"
       },
       {
+        "type": "video",
+        "src": "images/portfolio/video/full/nevuary/004.mp4"
+      },
+      {
         "type": "image",
         "src": "images/portfolio/full/nevuary/018.webp"
       },
@@ -137,6 +109,10 @@ var PORTFOLIO_PROJECTS = {
       {
         "type": "image",
         "src": "images/portfolio/full/nevuary/022.webp"
+      },
+      {
+        "type": "video",
+        "src": "images/portfolio/video/full/nevuary/005.mp4"
       },
       {
         "type": "image",
@@ -159,6 +135,10 @@ var PORTFOLIO_PROJECTS = {
         "src": "images/portfolio/full/nevuary/027.webp"
       },
       {
+        "type": "video",
+        "src": "images/portfolio/video/full/nevuary/006.mp4"
+      },
+      {
         "type": "image",
         "src": "images/portfolio/full/nevuary/028.webp"
       },
@@ -173,6 +153,10 @@ var PORTFOLIO_PROJECTS = {
       {
         "type": "image",
         "src": "images/portfolio/full/nevuary/031.webp"
+      },
+      {
+        "type": "video",
+        "src": "images/portfolio/video/full/nevuary/007.mp4"
       },
       {
         "type": "image",
@@ -195,6 +179,10 @@ var PORTFOLIO_PROJECTS = {
         "src": "images/portfolio/full/nevuary/036.webp"
       },
       {
+        "type": "video",
+        "src": "images/portfolio/video/full/nevuary/008.mp4"
+      },
+      {
         "type": "image",
         "src": "images/portfolio/full/nevuary/037.webp"
       },
@@ -215,6 +203,10 @@ var PORTFOLIO_PROJECTS = {
         "src": "images/portfolio/full/nevuary/041.webp"
       },
       {
+        "type": "video",
+        "src": "images/portfolio/video/full/nevuary/009.mp4"
+      },
+      {
         "type": "image",
         "src": "images/portfolio/full/nevuary/042.webp"
       },
@@ -229,6 +221,10 @@ var PORTFOLIO_PROJECTS = {
       {
         "type": "image",
         "src": "images/portfolio/full/nevuary/045.webp"
+      },
+      {
+        "type": "video",
+        "src": "images/portfolio/video/full/nevuary/010.mp4"
       },
       {
         "type": "image",
@@ -251,496 +247,16 @@ var PORTFOLIO_PROJECTS = {
         "src": "images/portfolio/full/nevuary/050.webp"
       },
       {
+        "type": "video",
+        "src": "images/portfolio/video/full/nevuary/011.mp4"
+      },
+      {
         "type": "image",
         "src": "images/portfolio/full/nevuary/051.webp"
       },
       {
         "type": "image",
         "src": "images/portfolio/full/nevuary/052.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/053.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/054.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/055.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/056.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/057.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/058.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/059.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/060.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/061.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/062.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/063.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/064.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/065.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/066.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/067.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/068.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/069.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/070.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/071.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/072.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/073.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/074.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/075.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/076.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/077.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/078.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/079.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/080.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/081.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/082.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/083.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/084.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/085.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/086.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/087.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/088.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/089.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/090.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/091.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/092.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/093.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/094.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/095.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/096.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/097.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/098.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/099.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/100.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/101.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/102.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/103.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/104.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/105.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/106.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/107.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/108.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/109.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/110.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/111.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/112.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/113.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/114.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/115.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/116.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/117.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/118.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/119.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/120.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/121.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/122.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/123.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/124.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/125.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/126.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/127.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/128.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/129.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/130.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/131.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/132.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/133.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/134.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/135.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/136.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/137.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/138.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/139.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/140.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/141.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/142.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/143.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/144.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/145.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/146.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/147.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/148.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/149.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/150.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/151.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/152.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/153.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/154.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/155.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/156.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/157.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/158.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/159.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/160.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/161.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/162.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/163.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/164.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/165.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/166.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/167.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/168.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/169.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/170.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/171.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/172.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/nevuary/173.webp"
       }
     ]
   },
@@ -769,11 +285,6 @@ var PORTFOLIO_PROJECTS = {
     "tag": "Commercial & Event",
     "description": "Ongoing brand and sponsorship coverage for RiverRidge Waste Management, from equestrian sponsorship at the Balmoral Show to a charity partnership with Northern Ireland Hospice. Coverage built to show up wherever RiverRidge shows up, on-brand every time.",
     "media": [
-      {
-        "type": "video",
-        "src": "images/portfolio/video/full/riverridge/001.mp4",
-        "poster": "images/portfolio/riverridge.webp"
-      },
       {
         "type": "image",
         "src": "images/portfolio/full/riverridge/001.webp"
@@ -819,6 +330,11 @@ var PORTFOLIO_PROJECTS = {
         "src": "images/portfolio/full/riverridge/011.webp"
       },
       {
+        "type": "video",
+        "src": "images/portfolio/video/full/riverridge/001.mp4",
+        "poster": "images/portfolio/riverridge.webp"
+      },
+      {
         "type": "image",
         "src": "images/portfolio/full/riverridge/012.webp"
       },
@@ -857,54 +373,6 @@ var PORTFOLIO_PROJECTS = {
       {
         "type": "image",
         "src": "images/portfolio/full/riverridge/021.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/riverridge/022.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/riverridge/023.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/riverridge/024.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/riverridge/025.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/riverridge/026.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/riverridge/027.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/riverridge/028.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/riverridge/029.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/riverridge/030.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/riverridge/031.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/riverridge/032.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/riverridge/033.webp"
       }
     ]
   },
@@ -1102,61 +570,6 @@ var PORTFOLIO_PROJECTS = {
       {
         "type": "image",
         "src": "images/portfolio/full/portrait/021.webp"
-      }
-    ]
-  },
-  "landscape": {
-    "title": "Landscape",
-    "tag": "Photography",
-    "description": "Landscape and nature photography shot around Northern Ireland, from misty mountain sunrises to a wind turbine caught mid-controlled-burn. Proof we can make anything look cinematic.",
-    "media": [
-      {
-        "type": "image",
-        "src": "images/portfolio/full/landscape/001.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/landscape/002.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/landscape/003.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/landscape/004.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/landscape/005.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/landscape/006.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/landscape/007.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/landscape/008.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/landscape/009.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/landscape/010.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/landscape/011.webp"
-      },
-      {
-        "type": "image",
-        "src": "images/portfolio/full/landscape/012.webp"
       }
     ]
   },

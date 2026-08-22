@@ -9,6 +9,7 @@ process_folder() {
   local slug="$1"
   local folder="$2"
   local dest="$OUT/$slug"
+  rm -rf "$dest"
   mkdir -p "$dest"
   local i=1
   find "$folder" -iname "*.jpg" -not -name "._*" | sort | while read -r f; do
@@ -28,7 +29,6 @@ process_folder "riverridge" "$SRC/Commercial/RiverRidge/Photo"
 process_folder "ulster-rally" "$SRC/Action/Ulster Rally"
 process_folder "moo-town" "$SRC/Food/Moo Town Creamery/Photo"
 process_folder "portrait" "$SRC/Portrait/Photo"
-process_folder "landscape" "$SRC/Landscape"
 process_folder "event" "$SRC/Event/Photo"
 
 echo "--- done ---"

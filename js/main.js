@@ -284,7 +284,11 @@
         btn.classList.add("bg-signal", "text-white", "border-signal");
         btn.setAttribute("aria-pressed", "true");
         items.forEach(function (item) {
-          var match = filter === "all" || item.getAttribute("data-category") === filter;
+          // data-category can hold multiple space-separated values (e.g. a
+          // project shot in both video and photography shows under either
+          // filter) rather than forcing one bucket per project.
+          var cats = item.getAttribute("data-category").split(/\s+/);
+          var match = filter === "all" || cats.indexOf(filter) !== -1;
           item.style.display = match ? "" : "none";
         });
       });
@@ -361,19 +365,22 @@
     var currentMedia = [];
     var currentIndex = 0;
 
-    // A tile's poster/first-frame element. Videos use preload="metadata" plus a
-    // #t=0.1 fragment so a still frame shows even without a generated poster;
-    // the mosaic projects hold at most ~11 videos, so this stays cheap.
+    // A tile's poster/first-frame element. Videos autoplay muted in place
+    // once scrolled into view (see galleryVideoObserver below) rather than
+    // sitting static until clicked, so the gallery reads as alive while you
+    // scroll; preload stays "none" until the observer switches it on so a
+    // 60+ item project doesn't request every clip up front.
     var buildThumb = function (item, i, project) {
       var el;
       if (item.type === "video") {
         el = document.createElement("video");
-        el.src = item.src + (item.src.indexOf("#") === -1 ? "#t=0.1" : "");
+        el.src = item.src;
         if (item.poster) el.poster = item.poster;
         el.muted = true;
+        el.loop = true;
         el.playsInline = true;
         el.tabIndex = -1;
-        el.setAttribute("preload", "metadata");
+        el.setAttribute("preload", "none");
       } else {
         el = document.createElement("img");
         el.src = item.src;
@@ -383,21 +390,40 @@
       return el;
     };
 
-    var playBadge = function () {
-      var b = document.createElement("span");
-      b.className = "pointer-events-none absolute inset-0 flex items-center justify-center";
-      b.innerHTML = '<span class="flex h-11 w-11 items-center justify-center rounded-full bg-ink/70 backdrop-blur border border-paper/40"><svg class="h-4 w-4 text-paper" style="margin-left:2px" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>';
-      return b;
-    };
-
     var makeTile = function (item, i, project, className) {
       var tile = document.createElement("button");
       tile.type = "button";
       tile.className = className;
       tile.appendChild(buildThumb(item, i, project));
-      if (item.type === "video") tile.appendChild(playBadge());
       tile.addEventListener("click", function () { openViewer(i); });
       return tile;
+    };
+
+    // Autoplay gallery video tiles only while visible, muted, same pattern as
+    // the outer grid preview cards. Recreated on every project open since
+    // renderProjectMedia rebuilds the tiles from scratch each time.
+    var galleryVideoObserver = null;
+    var observeGalleryVideos = function () {
+      if (galleryVideoObserver) galleryVideoObserver.disconnect();
+      if (!("IntersectionObserver" in window)) return;
+      galleryVideoObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            var vid = entry.target;
+            if (entry.isIntersecting) {
+              if (vid.getAttribute("preload") === "none") vid.setAttribute("preload", "auto");
+              var pr = vid.play();
+              if (pr && pr.catch) pr.catch(function () {});
+            } else {
+              vid.pause();
+            }
+          });
+        },
+        { root: lightbox, threshold: 0.35 }
+      );
+      lbMedia.querySelectorAll("video").forEach(function (vid) {
+        galleryVideoObserver.observe(vid);
+      });
     };
 
     // Large projects use a dense square mosaic (contact sheet) so a 184-item
@@ -424,6 +450,7 @@
         frag.appendChild(makeTile(item, i, project, cls));
       });
       lbMedia.appendChild(frag);
+      observeGalleryVideos();
     };
 
     var renderViewerItem = function () {
@@ -438,7 +465,6 @@
         el.controls = true;
         el.autoplay = true;
         el.loop = true;
-        el.muted = true;
         el.playsInline = true;
         el.setAttribute("preload", "auto");
         var pr = el.play();
@@ -456,8 +482,17 @@
       viewerNext.style.display = many ? "" : "none";
     };
 
+    // Tiles keep autoplaying muted behind the modal unless paused — with the
+    // viewer's own clip now playing WITH sound, pause whichever tile(s) were
+    // running so they don't compete for attention/bandwidth, then hand
+    // playback back to them (still muted) once the viewer closes.
+    var pausedTileVideos = [];
     var openViewer = function (index) {
       currentIndex = index;
+      pausedTileVideos = Array.prototype.filter.call(lbMedia.querySelectorAll("video"), function (v) {
+        return !v.paused;
+      });
+      pausedTileVideos.forEach(function (v) { v.pause(); });
       renderViewerItem();
       viewer.classList.remove("hidden");
     };
@@ -465,6 +500,11 @@
     var closeViewer = function () {
       viewer.classList.add("hidden");
       viewerStage.innerHTML = "";
+      pausedTileVideos.forEach(function (v) {
+        var pr = v.play();
+        if (pr && pr.catch) pr.catch(function () {});
+      });
+      pausedTileVideos = [];
     };
 
     var viewerStep = function (dir) {

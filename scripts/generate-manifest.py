@@ -54,14 +54,6 @@ PROJECTS = [
         "hasVideos": False,
     },
     {
-        "slug": "landscape",
-        "title": "Landscape",
-        "tag": "Photography",
-        "description": "Landscape and nature photography shot around Northern Ireland, from misty mountain sunrises to a wind turbine caught mid-controlled-burn. Proof we can make anything look cinematic.",
-        "hasPhotos": True,
-        "hasVideos": False,
-    },
-    {
         "slug": "event",
         "title": "Event",
         "tag": "Photography",
@@ -87,10 +79,35 @@ PROJECTS = [
     },
 ]
 
+def interleave(photos, videos):
+    """Scatter videos evenly through the photo set instead of grouping them
+    all at the front — a project page with a dozen tall video tiles stacked
+    before any photos reads as a wall of clips, not a gallery. Each video
+    gets an evenly-spaced target slot (centred in its share of the run:
+    video j of n targets position (j+0.5)/n along the total length); photos
+    fill in original order around them. No-op if either list is empty."""
+    total = len(photos) + len(videos)
+    if not videos or not photos:
+        return videos + photos
+    result = [None] * total
+    for j, v in enumerate(videos):
+        pos = min(round((j + 0.5) * total / len(videos)), total - 1)
+        while result[pos] is not None:
+            pos = (pos + 1) % total
+        result[pos] = v
+    pi = 0
+    for i in range(total):
+        if result[i] is None:
+            result[i] = photos[pi]
+            pi += 1
+    return result
+
+
 manifest = {}
 for p in PROJECTS:
     slug = p["slug"]
-    media = []
+    videos = []
+    photos = []
 
     if p["hasVideos"]:
         vdir = os.path.join(FULL_VIDEO_DIR, slug)
@@ -98,7 +115,7 @@ for p in PROJECTS:
             for fname in sorted(os.listdir(vdir)):
                 if fname.startswith("._") or not fname.endswith(".mp4"):
                     continue
-                media.append({
+                videos.append({
                     "type": "video",
                     "src": f"images/portfolio/video/full/{slug}/{fname}",
                 })
@@ -109,10 +126,12 @@ for p in PROJECTS:
             for fname in sorted(os.listdir(pdir)):
                 if fname.startswith("._") or not fname.endswith(".webp"):
                     continue
-                media.append({
+                photos.append({
                     "type": "image",
                     "src": f"images/portfolio/full/{slug}/{fname}",
                 })
+
+    media = interleave(photos, videos)
 
     # attach a poster to the first video if a hero image exists
     hero = f"images/portfolio/{slug}.webp"
