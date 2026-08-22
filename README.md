@@ -24,7 +24,8 @@ Real client work from `Images:Video/Dead Air Creative Media - Portfolio/` has be
 | File | Used on | Source project |
 |---|---|---|
 | `home-hero.webp` | Home hero background | Landscape — "Windmills on Fire 2" |
-| `nevuary.webp`, `riverridge.webp`, `ulster-rally.webp`, `moo-town.webp`, `portrait.webp`, `event.webp`, `fresh-pop.webp`, `flawless-finesse.webp`, `ni-hospice.webp` | Portfolio grid (9 projects) + Home "Selected Work" teaser | Nevuary, RiverRidge, Ulster Rally, Moo Town Creamery, Portrait, Event, Fresh Pop, Flawless Finesse Detailing, RiverRidge × NI Hospice |
+| `nevuary.webp`, `riverridge.webp`, `ulster-rally.webp`, `moo-town.webp`, `portrait.webp`, `event.webp`, `fresh-pop.webp`, `flawless-finesse.webp`, `ni-hospice.webp` | Portfolio grid (9 projects) | Nevuary, RiverRidge, Ulster Rally, Moo Town Creamery, Portrait, Event, Fresh Pop, Flawless Finesse Detailing, RiverRidge × NI Hospice |
+| Every `images/portfolio/full/<project>/NNN.webp` (129 photos across 5 photography projects) | Home "Three Crafts" Photography card | Same source galleries — [js/main.js](js/main.js) reads every `type: "image"` entry out of `js/portfolio-data.js` at runtime, shuffles once per page load, and crossfades through all of them every 2s (no hardcoded shortlist to keep in sync) |
 | `service-video.webp`, `service-photography.webp` | Services page | Nevuary (video still), Felix portrait shoot |
 | `about-mateusz.webp`, `about-ciaran.webp` | About page founder portraits | Client-supplied B&W studio portraits against the DA mural (`DA Website Portraits-Mateusz/Ciaran.jpg`), centre-cropped 4088² → 4:5 |
 
@@ -35,10 +36,10 @@ Both founders now have real portraits (the earlier `about-founder.webp` / `about
 Still placeholder (no source assets exist yet):
 | Placeholder file | Used on | Replace with |
 |---|---|---|
-| `service-design.svg` | Services page | 4:5 graphic design sample — **no design work was in the supplied content**, this needs a real asset |
+| `service-design.svg` | Home "Three Crafts" Design card + Services page | Full-bleed colour bars (no text) — **no design work was in the supplied content**, this still needs a real 4:5 design sample |
 | `og-image.svg` | Social share previews | **Export a 1200×630 PNG/JPG** — most platforms (Facebook, LinkedIn, iMessage) don't render SVG `og:image` reliably |
 
-The "Design" filter on the portfolio page currently shows nothing when clicked, for the same reason — add a design project once you have one to show.
+The "Design" filter on the portfolio page shows a static "Under Construction." tile (`portfolio.html`, `[data-category="design"]`) rather than nothing — swap it for a real project card once design work exists to show, and delete the tile.
 
 ### 1b. Portfolio project pages (every photo, not a curated few)
 Clicking a project card on `portfolio.html` opens a full-page takeover with the title, description, and **every photo/video from that project's source folder** (146 items total across the 9 projects; Nevuary alone has 63). The gallery adapts to project size (all logic in the `#lightbox` block of `js/main.js`, styles under `@layer components` in `css/input.css`):
@@ -69,7 +70,7 @@ None of this loads on first page visit either way — gallery images use `loadin
 Current values across all five HTML files:
 - Email: `hello@deadaircreative.net` (confirmed real)
 - Region: "Serving businesses across Ireland & Northern Ireland" (footer + contact page)
-- `01234 567 890` / `tel:+441234567890` → still placeholder, replace with the real phone number
+- Phone number removed from the footer (client had no number to publish yet) — re-add a `tel:` link in the "Get In Touch" list on all five pages if one becomes available
 - Social links (`#` hrefs in the footer) → still placeholder, replace with real Instagram/TikTok/Facebook/LinkedIn URLs
 - Canonical domain is `https://www.deadaircreative.net/` (matched to the email domain) in every `<link rel="canonical">`, `sitemap.xml` and `robots.txt` — **confirm this is the site's final domain** before launch and swap if not
 
@@ -113,9 +114,9 @@ The favicon is now also the real "DA" skull mark (previously a simplified text p
 
 ## Deployment
 
-Any static host works — no build step needed at deploy time beyond `npm run build:css`. Simplest options:
+Any static host works — no build step needed at deploy time as long as `css/output.css` is committed up to date (run `npm run build:css` and commit the result after any styling change). Simplest options:
 - **Netlify / Vercel**: drag-and-drop the folder, or connect the repo (build command `npm run build:css`, publish directory `/`)
-- **GitHub Pages**: push to a repo, enable Pages on the main branch
+- **GitHub Pages**: push this repo to GitHub, then in the repo's **Settings → Pages**, set Source to "Deploy from a branch" and pick `main` / `/ (root)`. Pages serves `index.html` at the repo root automatically — no workflow file needed for a plain static site like this one. If deploying to a project subpath (`username.github.io/repo-name` rather than a custom domain), double-check the `<link rel="canonical">` tags, `sitemap.xml` and `robots.txt` still point at the intended final domain first (see **Contact details** above).
 
 ## Accessibility & performance notes
 
@@ -123,3 +124,7 @@ Any static host works — no build step needed at deploy time beyond `npm run bu
 - Reduced-motion respected (animations disable via `prefers-reduced-motion`)
 - Scroll-reveal animation has a safety net: if anything ever prevents it from triggering, content force-reveals after 4s rather than staying invisible
 - All interactive icons use inline SVG (no icon fonts, no emoji-as-icon)
+
+## License
+
+All rights reserved — see [LICENSE](LICENSE). This is Dead Air Creative Media's proprietary site, not an open-source project; the code, photography, video, and brand assets in this repo may not be reused without permission.

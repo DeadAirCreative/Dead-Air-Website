@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
 <link rel="canonical" href="https://www.deadaircreative.net/">
-<link rel="stylesheet" href="css/output.css?v=1787421263">
+<link rel="stylesheet" href="css/output.css?v=1787425074">
 </head>
 <body>
 <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-signal focus:text-white focus:px-4 focus:py-3 focus:font-display focus:font-bold focus:uppercase">Skip to content</a>
@@ -69,7 +69,7 @@
       </div>
 
       <div id="hero-media" class="hero-media">
-        <video id="hero-video" src="images/portfolio/video/home-hero.mp4?v=1787421263" poster="images/portfolio/home-hero-poster.webp?v=1787421263" muted loop playsinline preload="auto" aria-hidden="true"></video>
+        <video id="hero-video" src="images/portfolio/video/home-hero.mp4?v=1787425074" poster="images/portfolio/home-hero-poster.webp?v=1787425074" muted loop playsinline preload="auto" aria-hidden="true"></video>
         <div id="hero-scrim" class="absolute inset-0 bg-ink/40"></div>
       </div>
 
@@ -163,7 +163,7 @@
     <div class="grid md:grid-cols-3 gap-4">
       <a href="services.html#video" class="group block border border-border overflow-hidden spotlight reveal" style="transition-delay:80ms">
         <div class="aspect-[4/5] overflow-hidden">
-          <img src="images/placeholders/service-video.svg" alt="Video content service" class="h-full w-full object-cover transition-transform duration-500 ease-out-expo group-hover:scale-105">
+          <video src="images/portfolio/video/home-hero.mp4" poster="images/portfolio/home-hero-poster.webp" class="h-full w-full object-cover transition-transform duration-500 ease-out-expo group-hover:scale-105" autoplay muted loop playsinline preload="none" aria-hidden="true"></video>
         </div>
         <div class="p-6 border-t border-border">
           <h3 class="font-display text-xl font-bold uppercase">Video Content</h3>
@@ -172,7 +172,10 @@
       </a>
       <a href="services.html#photography" class="group block border border-border overflow-hidden spotlight reveal" style="transition-delay:160ms">
         <div class="aspect-[4/5] overflow-hidden">
-          <img src="images/placeholders/service-photography.svg" alt="Photography service" class="h-full w-full object-cover transition-transform duration-500 ease-out-expo group-hover:scale-105">
+          <div class="photo-cycle relative h-full w-full">
+            <img src="images/portfolio/full/portrait/001.webp" alt="Photography service" class="photo-cycle-img absolute inset-0 h-full w-full object-cover opacity-100 transition-opacity duration-700 ease-out-expo group-hover:scale-105">
+            <img src="images/portfolio/full/portrait/001.webp" alt="" aria-hidden="true" class="photo-cycle-img absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-700 ease-out-expo group-hover:scale-105">
+          </div>
         </div>
         <div class="p-6 border-t border-border">
           <h3 class="font-display text-xl font-bold uppercase">Photography</h3>
@@ -181,40 +184,13 @@
       </a>
       <a href="services.html#design" class="group block border border-border overflow-hidden spotlight reveal" style="transition-delay:240ms">
         <div class="aspect-[4/5] overflow-hidden">
-          <img src="images/placeholders/service-design.svg" alt="Graphic design service" class="h-full w-full object-cover transition-transform duration-500 ease-out-expo group-hover:scale-105">
+          <img src="images/placeholders/service-design.svg?v=1787425074" alt="Graphic design service" class="h-full w-full object-cover transition-transform duration-500 ease-out-expo group-hover:scale-105">
         </div>
         <div class="p-6 border-t border-border">
           <h3 class="font-display text-xl font-bold uppercase">Graphic Design</h3>
           <p class="mt-2 text-sm text-paper-muted">Website and social graphics that keep your brand consistent everywhere.</p>
         </div>
       </a>
-    </div>
-  </section>
-
-  <!-- FEATURED WORK -->
-  <section class="section border-t border-border">
-    <div class="container-px max-w-content mx-auto">
-      <div class="flex items-end justify-between mb-10 flex-wrap gap-4">
-        <div>
-          <p class="eyebrow mb-4 reveal">Portfolio</p>
-          <h2 class="text-display-lg reveal" style="transition-delay:80ms">Selected Work.</h2>
-        </div>
-        <a href="portfolio.html" class="nav-link whitespace-nowrap">View Full Portfolio &rarr;</a>
-      </div>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <a href="portfolio.html" class="block border border-border overflow-hidden spotlight aspect-[4/5] reveal" style="transition-delay:80ms">
-          <img src="images/portfolio/nevuary.webp" alt="Nevuary racing jacket campaign" class="h-full w-full object-cover">
-        </a>
-        <a href="portfolio.html" class="block border border-border overflow-hidden spotlight aspect-[4/5] reveal" style="transition-delay:140ms">
-          <img src="images/portfolio/riverridge.webp" alt="RiverRidge sponsorship coverage" class="h-full w-full object-cover">
-        </a>
-        <a href="portfolio.html" class="block border border-border overflow-hidden spotlight aspect-[4/5] reveal" style="transition-delay:200ms">
-          <img src="images/portfolio/ulster-rally.webp" alt="Ulster Rally motorsport photography" class="h-full w-full object-cover">
-        </a>
-        <a href="portfolio.html" class="block border border-border overflow-hidden spotlight aspect-[4/5] reveal" style="transition-delay:260ms">
-          <img src="images/portfolio/moo-town.webp" alt="Moo Town Creamery product photography" class="h-full w-full object-cover">
-        </a>
-      </div>
     </div>
   </section>
 
@@ -261,7 +237,6 @@
       <h3 class="font-display text-sm font-bold uppercase tracking-wide mb-4">Get In Touch</h3>
       <ul class="space-y-3 text-paper-muted">
         <li><a href="mailto:hello@deadaircreative.net" class="hover:text-paper transition-colors">hello@deadaircreative.net</a></li>
-        <li><a href="tel:+441234567890" class="hover:text-paper transition-colors">01234 567 890</a></li>
         <li>Serving businesses across Ireland &amp; Northern Ireland</li>
       </ul>
     </div>
@@ -274,6 +249,7 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=1787421263"></script>
+<script src="js/portfolio-data.js?v=1787425074"></script>
+<script src="js/main.js?v=1787425074"></script>
 </body>
 </html>

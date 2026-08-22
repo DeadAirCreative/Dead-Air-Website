@@ -269,6 +269,51 @@
     }, 4000);
   }
 
+  // Rotate the photography service thumbnail every 2s through every real photo
+  // in the portfolio (all `type: "image"` entries from portfolio-data.js —
+  // this skips video files and their poster frames, which read as blurry
+  // grabbed-from-video stills next to actual photography). Only two <img>
+  // layers ever exist in the DOM; each cycle preloads the next photo off-
+  // screen before crossfading so there's no flash of a half-loaded image.
+  var photoCycles = document.querySelectorAll(".photo-cycle");
+  if (!reduceMotion && photoCycles.length && typeof PORTFOLIO_PROJECTS !== "undefined") {
+    var allPhotos = [];
+    Object.keys(PORTFOLIO_PROJECTS).forEach(function (key) {
+      PORTFOLIO_PROJECTS[key].media.forEach(function (item) {
+        if (item.type === "image") allPhotos.push(item.src);
+      });
+    });
+    for (var si = allPhotos.length - 1; si > 0; si--) {
+      var sj = Math.floor(Math.random() * (si + 1));
+      var tmp = allPhotos[si];
+      allPhotos[si] = allPhotos[sj];
+      allPhotos[sj] = tmp;
+    }
+    if (allPhotos.length > 1) {
+      photoCycles.forEach(function (cycle) {
+        var layers = cycle.querySelectorAll(".photo-cycle-img");
+        if (layers.length < 2) return;
+        var front = layers[0];
+        var back = layers[1];
+        var idx = 0;
+        setInterval(function () {
+          idx = (idx + 1) % allPhotos.length;
+          var nextSrc = allPhotos[idx];
+          var preload = new Image();
+          preload.onload = function () {
+            back.src = nextSrc;
+            back.classList.replace("opacity-0", "opacity-100");
+            front.classList.replace("opacity-100", "opacity-0");
+            var swap = front;
+            front = back;
+            back = swap;
+          };
+          preload.src = nextSrc;
+        }, 2000);
+      });
+    }
+  }
+
   // Portfolio filter (portfolio.html)
   var filterBar = document.getElementById("portfolio-filters");
   if (filterBar) {
