@@ -651,5 +651,17 @@ var PORTFOLIO_PROJECTS = {
         "poster": "images/portfolio/ni-hospice.webp"
       }
     ]
+  },
+  "star-barbers": {
+    "title": "Star Barbers",
+    "tag": "Video",
+    "description": "A promo video for Star Barbers, built around the cut itself: the clippers, the finishing touches and the finished look walking out the door.",
+    "media": [
+      {
+        "type": "video",
+        "src": "images/portfolio/video/full/star-barbers/001.mp4",
+        "poster": "images/portfolio/star-barbers.webp"
+      }
+    ]
   }
 };

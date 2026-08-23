@@ -77,6 +77,14 @@ PROJECTS = [
         "hasPhotos": False,
         "hasVideos": True,
     },
+    {
+        "slug": "star-barbers",
+        "title": "Star Barbers",
+        "tag": "Video",
+        "description": "A promo video for Star Barbers, built around the cut itself: the clippers, the finishing touches and the finished look walking out the door.",
+        "hasPhotos": False,
+        "hasVideos": True,
+    },
 ]
 
 def interleave(photos, videos):
