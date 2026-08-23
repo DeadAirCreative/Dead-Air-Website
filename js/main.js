@@ -166,6 +166,18 @@
         if (pr && pr.catch) pr.catch(function () {});
       };
       heroPlay();
+      // The very first play() can be silently rejected on some phones (seen
+      // on devices with power-saving / data-saver modes active, or simply if
+      // the video hasn't buffered enough yet when play() was first called)
+      // with nothing above ever retrying it, leaving the hero frozen on its
+      // poster frame for the whole visit. Retry once the video actually has
+      // data to play, and once more on the visitor's first real tap/scroll —
+      // a genuine user gesture reliably overrides autoplay-blocking policies
+      // that a script-only retry can't.
+      heroVideo.addEventListener("canplay", heroPlay);
+      ["touchstart", "click", "scroll"].forEach(function (evt) {
+        document.addEventListener(evt, heroPlay, { once: true, passive: true });
+      });
       // Pause the loop while the hero is scrolled out of view
       var heroInView = true;
       if ("IntersectionObserver" in window) {
