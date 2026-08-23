@@ -306,6 +306,18 @@
   .hero-media video {
     @apply absolute inset-0 h-full w-full object-cover;
   }
+  /* Desktop: #hero-titles centres in the FULL 100vh sticky viewport, but
+     .hero-copy's height is content-driven, not vh-scaled — on shorter
+     browser windows (a non-maximized Chrome window on a laptop easily
+     lands under ~750px tall) the centred headline's last line and the
+     bottom-anchored subhead paragraph collide. Lifting the whole eyebrow
+     +headline stack keeps their relative spacing intact (unlike shifting
+     just the h1) and mirrors the equivalent mobile fix below. */
+  @media (min-width: 768px) {
+    #hero-titles {
+      transform: translateY(-7vh);
+    }
+  }
   .hero-copy {
     @apply absolute inset-x-0 bottom-0 z-30 flex flex-col items-center text-center container-px pb-10 pt-24;
     background: linear-gradient(to top, rgba(10, 10, 10, 0.85), rgba(10, 10, 10, 0.45) 55%, transparent);
