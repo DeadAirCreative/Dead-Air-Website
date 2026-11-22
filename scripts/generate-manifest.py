@@ -12,6 +12,7 @@ PROJECTS = [
         "description": "A full campaign for Nevuary's racing jacket drop, from studio product shots to street-style campaign photography and short-form video across two locations. We built a visual world that matched the brand's motorsport-meets-streetwear identity, shot to move fast across Instagram and TikTok.",
         "hasPhotos": True,
         "hasVideos": True,
+        "isPhotography": True,
     },
     {
         "slug": "fresh-pop",
@@ -20,6 +21,7 @@ PROJECTS = [
         "description": "Street-style video content for Fresh Pop, built entirely around movement and location. Short, punchy edits designed for the scroll. No posed shots, just real energy.",
         "hasPhotos": False,
         "hasVideos": True,
+        "isPhotography": True,
     },
     {
         "slug": "riverridge",
@@ -28,6 +30,7 @@ PROJECTS = [
         "description": "Ongoing brand and sponsorship coverage for RiverRidge Waste Management, from equestrian sponsorship at the Balmoral Show to a charity partnership with Northern Ireland Hospice. Coverage built to show up wherever RiverRidge shows up, on-brand every time.",
         "hasPhotos": True,
         "hasVideos": True,
+        "isPhotography": True,
     },
     {
         "slug": "ulster-rally",
@@ -36,6 +39,7 @@ PROJECTS = [
         "description": "Trackside action photography from the Ulster Rally: fast cars, tight corners and the split-second timing that motorsport photography demands.",
         "hasPhotos": True,
         "hasVideos": False,
+        "isPhotography": True,
     },
     {
         "slug": "moo-town",
@@ -44,6 +48,7 @@ PROJECTS = [
         "description": "Bright, appetite-driving product photography for Moo Town Creamery, built to make every scoop look exactly as good as it tastes, shot for their menu, socials and seasonal campaigns.",
         "hasPhotos": True,
         "hasVideos": False,
+        "isPhotography": True,
     },
     {
         "slug": "portrait",
@@ -52,6 +57,7 @@ PROJECTS = [
         "description": "A collection of portrait work across multiple shoots and subjects. Proof that good portrait photography is about direction and light, not just the person in front of the camera.",
         "hasPhotos": True,
         "hasVideos": False,
+        "isPhotography": True,
     },
     {
         "slug": "event",
@@ -60,6 +66,7 @@ PROJECTS = [
         "description": "Event photography built to capture the moments people actually remember: the reactions, not just the room.",
         "hasPhotos": True,
         "hasVideos": False,
+        "isPhotography": True,
     },
     {
         "slug": "flawless-finesse",
@@ -68,6 +75,7 @@ PROJECTS = [
         "description": "A promo video for Flawless Finesse Detailing, built around the most satisfying part of the job: foam, water and a car going from dull to showroom in sixty seconds.",
         "hasPhotos": False,
         "hasVideos": True,
+        "isPhotography": True,
     },
     {
         "slug": "ni-hospice",
@@ -76,6 +84,7 @@ PROJECTS = [
         "description": "A short film documenting RiverRidge's donation partnership with Northern Ireland Hospice. A reminder that sponsorship content can do more than put a logo on a banner.",
         "hasPhotos": False,
         "hasVideos": True,
+        "isPhotography": True,
     },
     {
         "slug": "star-barbers",
@@ -84,6 +93,16 @@ PROJECTS = [
         "description": "A promo video for Star Barbers, built around the cut itself: the clippers, the finishing touches and the finished look walking out the door.",
         "hasPhotos": False,
         "hasVideos": True,
+        "isPhotography": True,
+    },
+    {
+        "slug": "gorilla-fitness",
+        "title": "Gorilla Fitness",
+        "tag": "Graphic Design",
+        "description": "Full brand identity concept for Gorilla Fitness, a potential gym client. A bold gorilla mark, a poster campaign that moves from the gym floor to the billboard, and merch mockups to show how it all comes together.",
+        "hasPhotos": True,
+        "hasVideos": False,
+        "isPhotography": False,
     },
 ]
 
@@ -153,6 +172,7 @@ for p in PROJECTS:
         "title": p["title"],
         "tag": p["tag"],
         "description": p["description"],
+        "isPhotography": p["isPhotography"],
         "media": media,
     }
 

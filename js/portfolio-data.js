@@ -4,6 +4,7 @@ var PORTFOLIO_PROJECTS = {
     "title": "Nevuary",
     "tag": "Video & Photography",
     "description": "A full campaign for Nevuary's racing jacket drop, from studio product shots to street-style campaign photography and short-form video across two locations. We built a visual world that matched the brand's motorsport-meets-streetwear identity, shot to move fast across Instagram and TikTok.",
+    "isPhotography": true,
     "media": [
       {
         "type": "image",
@@ -264,6 +265,7 @@ var PORTFOLIO_PROJECTS = {
     "title": "Fresh Pop",
     "tag": "Video",
     "description": "Street-style video content for Fresh Pop, built entirely around movement and location. Short, punchy edits designed for the scroll. No posed shots, just real energy.",
+    "isPhotography": true,
     "media": [
       {
         "type": "video",
@@ -284,6 +286,7 @@ var PORTFOLIO_PROJECTS = {
     "title": "RiverRidge",
     "tag": "Commercial & Event",
     "description": "Ongoing brand and sponsorship coverage for RiverRidge Waste Management, from equestrian sponsorship at the Balmoral Show to a charity partnership with Northern Ireland Hospice. Coverage built to show up wherever RiverRidge shows up, on-brand every time.",
+    "isPhotography": true,
     "media": [
       {
         "type": "image",
@@ -300,6 +303,11 @@ var PORTFOLIO_PROJECTS = {
       {
         "type": "image",
         "src": "images/portfolio/full/riverridge/004.webp"
+      },
+      {
+        "type": "video",
+        "src": "images/portfolio/video/full/riverridge/001.mp4",
+        "poster": "images/portfolio/riverridge.webp"
       },
       {
         "type": "image",
@@ -331,8 +339,7 @@ var PORTFOLIO_PROJECTS = {
       },
       {
         "type": "video",
-        "src": "images/portfolio/video/full/riverridge/001.mp4",
-        "poster": "images/portfolio/riverridge.webp"
+        "src": "images/portfolio/video/full/riverridge/002.mp4"
       },
       {
         "type": "image",
@@ -363,6 +370,10 @@ var PORTFOLIO_PROJECTS = {
         "src": "images/portfolio/full/riverridge/018.webp"
       },
       {
+        "type": "video",
+        "src": "images/portfolio/video/full/riverridge/003.mp4"
+      },
+      {
         "type": "image",
         "src": "images/portfolio/full/riverridge/019.webp"
       },
@@ -380,6 +391,7 @@ var PORTFOLIO_PROJECTS = {
     "title": "Ulster Rally",
     "tag": "Action",
     "description": "Trackside action photography from the Ulster Rally: fast cars, tight corners and the split-second timing that motorsport photography demands.",
+    "isPhotography": true,
     "media": [
       {
         "type": "image",
@@ -435,6 +447,7 @@ var PORTFOLIO_PROJECTS = {
     "title": "Moo Town Creamery",
     "tag": "Food",
     "description": "Bright, appetite-driving product photography for Moo Town Creamery, built to make every scoop look exactly as good as it tastes, shot for their menu, socials and seasonal campaigns.",
+    "isPhotography": true,
     "media": [
       {
         "type": "image",
@@ -486,6 +499,7 @@ var PORTFOLIO_PROJECTS = {
     "title": "Portrait",
     "tag": "Photography",
     "description": "A collection of portrait work across multiple shoots and subjects. Proof that good portrait photography is about direction and light, not just the person in front of the camera.",
+    "isPhotography": true,
     "media": [
       {
         "type": "image",
@@ -577,6 +591,7 @@ var PORTFOLIO_PROJECTS = {
     "title": "Event",
     "tag": "Photography",
     "description": "Event photography built to capture the moments people actually remember: the reactions, not just the room.",
+    "isPhotography": true,
     "media": [
       {
         "type": "image",
@@ -632,6 +647,7 @@ var PORTFOLIO_PROJECTS = {
     "title": "Flawless Finesse Detailing",
     "tag": "Video",
     "description": "A promo video for Flawless Finesse Detailing, built around the most satisfying part of the job: foam, water and a car going from dull to showroom in sixty seconds.",
+    "isPhotography": true,
     "media": [
       {
         "type": "video",
@@ -644,6 +660,7 @@ var PORTFOLIO_PROJECTS = {
     "title": "NI Hospice",
     "tag": "RiverRidge · Video",
     "description": "A short film documenting RiverRidge's donation partnership with Northern Ireland Hospice. A reminder that sponsorship content can do more than put a logo on a banner.",
+    "isPhotography": true,
     "media": [
       {
         "type": "video",
@@ -656,11 +673,60 @@ var PORTFOLIO_PROJECTS = {
     "title": "Star Barbers",
     "tag": "Video",
     "description": "A promo video for Star Barbers, built around the cut itself: the clippers, the finishing touches and the finished look walking out the door.",
+    "isPhotography": true,
     "media": [
       {
         "type": "video",
         "src": "images/portfolio/video/full/star-barbers/001.mp4",
         "poster": "images/portfolio/star-barbers.webp"
+      }
+    ]
+  },
+  "gorilla-fitness": {
+    "title": "Gorilla Fitness",
+    "tag": "Graphic Design",
+    "description": "Full brand identity concept for Gorilla Fitness, a potential gym client. A bold gorilla mark, a poster campaign that moves from the gym floor to the billboard, and merch mockups to show how it all comes together.",
+    "isPhotography": false,
+    "media": [
+      {
+        "type": "image",
+        "src": "images/portfolio/full/gorilla-fitness/001.webp"
+      },
+      {
+        "type": "image",
+        "src": "images/portfolio/full/gorilla-fitness/002.webp"
+      },
+      {
+        "type": "image",
+        "src": "images/portfolio/full/gorilla-fitness/003.webp"
+      },
+      {
+        "type": "image",
+        "src": "images/portfolio/full/gorilla-fitness/004.webp"
+      },
+      {
+        "type": "image",
+        "src": "images/portfolio/full/gorilla-fitness/005.webp"
+      },
+      {
+        "type": "image",
+        "src": "images/portfolio/full/gorilla-fitness/006.webp"
+      },
+      {
+        "type": "image",
+        "src": "images/portfolio/full/gorilla-fitness/007.webp"
+      },
+      {
+        "type": "image",
+        "src": "images/portfolio/full/gorilla-fitness/008.webp"
+      },
+      {
+        "type": "image",
+        "src": "images/portfolio/full/gorilla-fitness/009.webp"
+      },
+      {
+        "type": "image",
+        "src": "images/portfolio/full/gorilla-fitness/010.webp"
       }
     ]
   }

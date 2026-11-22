@@ -287,11 +287,15 @@
   // grabbed-from-video stills next to actual photography). Only two <img>
   // layers ever exist in the DOM; each cycle preloads the next photo off-
   // screen before crossfading so there's no flash of a half-loaded image.
+  // Projects flagged isPhotography:false (e.g. graphic design mockups) are
+  // skipped so design renders don't show up in a "real photography" showcase.
   var photoCycles = document.querySelectorAll(".photo-cycle");
   if (!reduceMotion && photoCycles.length && typeof PORTFOLIO_PROJECTS !== "undefined") {
     var allPhotos = [];
     Object.keys(PORTFOLIO_PROJECTS).forEach(function (key) {
-      PORTFOLIO_PROJECTS[key].media.forEach(function (item) {
+      var project = PORTFOLIO_PROJECTS[key];
+      if (project.isPhotography === false) return;
+      project.media.forEach(function (item) {
         if (item.type === "image") allPhotos.push(item.src);
       });
     });

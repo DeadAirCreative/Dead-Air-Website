@@ -29,6 +29,12 @@ avconvert -s "$SRC/Fashion/Fresh Pop/Video/fp1.mp4" -o "$OUT/fresh-pop/001.mp4" 
 avconvert -s "$SRC/Commercial/Flawless Finesse Detailing BMW Promo.MP4" -o "$OUT/flawless-finesse/001.mp4" -p Preset1280x720 --replace
 avconvert -s "$SRC/Commercial/RiverRidge/Video/RiverRidge NI Hospice Donation.MP4" -o "$OUT/ni-hospice/001.mp4" -p Preset1280x720 --replace
 avconvert -s "$SRC/Commercial/RiverRidge/Video/RiverRidge Balmoral 2026.mp4" -o "$OUT/riverridge/001.mp4" -p Preset1280x720 --replace
+# Preset960x540, not Preset1280x720: this reel runs 139s (vs ~30-60s for every
+# other clip), so at the same bitrate the 720p encode came out to 113MB, over
+# GitHub's 100MB hard file-size limit. Still a fixed bounding-box preset
+# (predictable output), just one size down to fit the length.
+avconvert -s "$SRC/Commercial/RiverRidge/Video/Agivey River RR Reel.mp4" -o "$OUT/riverridge/002.mp4" -p Preset960x540 --replace
+avconvert -s "$SRC/Commercial/RiverRidge/Video/RR Spar Testimonial (Fixed Captions).mp4" -o "$OUT/riverridge/003.mp4" -p Preset1280x720 --replace
 
 find "$OUT" -name "._*" -delete
 echo "--- done ---"

@@ -12,7 +12,7 @@ process_folder() {
   rm -rf "$dest"
   mkdir -p "$dest"
   local i=1
-  find "$folder" -iname "*.jpg" -not -name "._*" | sort | while read -r f; do
+  find "$folder" \( -iname "*.jpg" -o -iname "*.png" \) -not -name "._*" | sort | while read -r f; do
     local num=$(printf "%03d" "$i")
     local tmp="$dest/$num.jpg"
     sips -Z 1400 -s format jpeg -s formatOptions high "$f" --out "$tmp" >/dev/null 2>&1
@@ -30,6 +30,7 @@ process_folder "ulster-rally" "$SRC/Action/Ulster Rally"
 process_folder "moo-town" "$SRC/Food/Moo Town Creamery/Photo"
 process_folder "portrait" "$SRC/Portrait/Photo"
 process_folder "event" "$SRC/Event/Photo"
+process_folder "gorilla-fitness" "$SRC/Graphic Design/Gorilla Fitness"
 
 echo "--- done ---"
 du -sh "$OUT"
